@@ -1,0 +1,8 @@
+----------------------
+-  regras do jogo    -
+----------------------
+
+-Pode jogar com pessoas
+ou o computador.
+-So pode jogar 3 tipos
+de peças.

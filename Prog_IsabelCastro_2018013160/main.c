@@ -1,69 +1,88 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/unistd.h>
 #include "tabuleiro.h"
-#define LIN 3
-#define COL 4
 
-void menuPrincipal(){
-
-    printf("\n--------------------------------------------------------\n"
-           "                                                        \n"
-           "          -------------------------------             \n"
-           "                 JOGO DO SEMAFORO                     \n"
-           "          -------------------------------             \n"
-           "                   1. Iniciar jogo                    \n"
-           "                   2. Sair                            \n"
-           "--------------------------------------------------------\n"
-           ">> ");
+#define MENU "menu.txt"
+#define REGRAS "regras.txt"
 
 
+void menuPrincipal() {
 
-
+    FILE *f;
+    char c;
+    if ((f = fopen("menu.txt", "r")) == NULL) {
+        printf("ERRO AO ABRIR FICHEIRO %s.\n", MENU);
+        return;
+    }
+    while ((c = fgetc(f)) != EOF)
+        putchar(c);
+    fclose(f);
 }
+
 int main() {
-//    int escolha = 0;
-//    menuPrincipal();
-//    do {
-//
-//        scanf("%d", &escolha);
-//        switch (escolha) {
-//            case 1:
-//                printf("Jogo vai começar! \n");
-//        }
-//
-//
-//    } while (escolha != 2);
+    int COL=0, LIN=0;
+    int escolha = 0;
+    menuPrincipal();
+    char **tabuleiro;
+    int i, j;
+
+    do {
+
+        scanf("%d", &escolha);
+        switch (escolha) {
+            case 1:
+
+                printf("----------------------\nJogo vai começar!\n----------------------");
+                printf("\nIntroduza o n. de linhas e colunas do tabuleiro\n>>");
+                scanf("%d %d", &LIN, &COL);
+
+                puts("----------------------\nA criar tabuleiro...\n----------------------");
+                sleep(1);
+                tabuleiro = inicializaTabuleiro(LIN, COL);
+                printTabuleiro(LIN, COL, tabuleiro);
+                printf("Pretende adicionar quantas linhas ao tabuleiro?");
+                int newLinhas=0;
+                scanf("%d", &newLinhas);
+                tabuleiro= alteraNLinhas(newLinhas,LIN,COL,tabuleiro);
+                printTabuleiro(3, COL, tabuleiro); // por a fazer os valores por ponteiros para ser atualizado
 
 
+                break;
 
+            case 2:;
 
-    int **tabuleiro ;
-    int i, j ;
+                FILE *f;
+                char c;
+                if ((f = fopen("regras.txt", "r")) == NULL) {
+                    printf("ERRO AO ABRIR FICHEIRO %s.\n", REGRAS);
+                    return 0;
+                }
+                while ((c = fgetc(f)) != EOF)
+                    putchar(c);
 
-// aloca um vetor de LIN ponteiros para linhas
-    tabuleiro = malloc (LIN * sizeof (int*)) ;
+                fclose(f);
+                printf(">>");
+                break;
+            default:
+                //printf(">>");
+                break;
 
-// aloca um vetor com todos os elementos da matriz
-    tabuleiro[0] = malloc (LIN * COL * sizeof (int)) ;
-
-// ajusta os demais ponteiros de linhas (i > 0)
-    for (i=1; i < LIN; i++)
-        tabuleiro[i] = tabuleiro[0] + i * COL ;
-
-// percorre a matriz
-    for (i=0; i < LIN; i++) {
-        printf("\n");
-        for (j = 0; j < COL; j++) {
-            tabuleiro[i][j] = 0;
 
         }
-    }
+    } while (escolha != 3);
 
-    printTabuleiro(LIN,COL,tabuleiro);
+
+
+
+
+
+
 
 // libera a memória da matriz
-     free(tabuleiro[0]);
-     free(tabuleiro);
+    free(tabuleiro[0]);
+    free(tabuleiro);
     return 0;
 }
+

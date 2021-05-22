@@ -13,6 +13,8 @@ stdlib.h
 -
 string.h
 -
+sys/unistd.h
+-
 tabuleiro.h
 /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/tabuleiro.h
 

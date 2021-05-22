@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void printTabuleiro(int LIN, int COL, int **tab);
-void inicializaTabuleiro(int LIN,int COL, int **tab);
+void printTabuleiro(int lin, int col, char **tab);
+char** inicializaTabuleiro(int lin,int col);
+char** alteraNLinhas(int add,int lin,int col,char **tab);
 #endif //PROG_ISABELCASTRO_2018013160_TABULEIRO_H
