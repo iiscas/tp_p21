@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/jogo.h
+tabuleiro.h
+/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/tabuleiro.h
+
 /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/main.c
 stdio.h
 -
@@ -17,10 +21,10 @@ sys/unistd.h
 -
 tabuleiro.h
 /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/tabuleiro.h
-
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/tabuleiro.c
-tabuleiro.h
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/tabuleiro.h
+jogo.h
+/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/jogo.h
+utils.h
+/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/utils.h
 
 /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/tabuleiro.h
 stdio.h
@@ -29,4 +33,8 @@ stdlib.h
 -
 string.h
 -
+utils.h
+/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/utils.h
+
+/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/utils.h
 

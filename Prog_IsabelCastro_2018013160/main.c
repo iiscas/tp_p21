@@ -3,6 +3,8 @@
 #include <string.h>
 #include <sys/unistd.h>
 #include "tabuleiro.h"
+#include "jogo.h"
+#include "utils.h"
 
 #define MENU "menu.txt"
 #define REGRAS "regras.txt"
@@ -22,11 +24,23 @@ void menuPrincipal() {
 }
 
 int main() {
+    void initRandom();
     int COL=0, LIN=0;
-    int escolha = 0;
+    int escolha = 0,totalJogadores=0;
     menuPrincipal();
     char **tabuleiro;
+
+
+     jogador jogadores[2] = {
+            {'A', '-', 0,0},
+            {'B', '-', 0,0}
+    };
+
+
+
     int i, j;
+
+
 
     do {
 
@@ -35,18 +49,19 @@ int main() {
             case 1:
 
                 printf("----------------------\nJogo vai começar!\n----------------------");
-                printf("\nIntroduza o n. de linhas e colunas do tabuleiro\n>>");
-                scanf("%d %d", &LIN, &COL);
+                //printf("\nIntroduza o n. de linhas e colunas do tabuleiro\n>>");
+                //scanf("%d %d", &LIN, &COL);
 
                 puts("----------------------\nA criar tabuleiro...\n----------------------");
                 sleep(1);
-                tabuleiro = inicializaTabuleiro(LIN, COL);
+                tabuleiro = inicializaTabuleiro(&LIN,&COL);
                 printTabuleiro(LIN, COL, tabuleiro);
-                printf("Pretende adicionar quantas linhas ao tabuleiro?");
-                int newLinhas=0;
-                scanf("%d", &newLinhas);
-                tabuleiro= alteraNLinhas(newLinhas,LIN,COL,tabuleiro);
-                printTabuleiro(3, COL, tabuleiro); // por a fazer os valores por ponteiros para ser atualizado
+                iniciaJogo(tabuleiro,jogadores,&LIN,&COL);
+                //printf("Pretende adicionar quantas linhas ao tabuleiro?");
+                //int newLinhas=0;
+                //scanf("%d", &newLinhas);
+                //tabuleiro= alteraNLinhas(newLinhas,LIN,COL,tabuleiro);
+                //printTabuleiro(3, COL, tabuleiro); // por a fazer os valores por ponteiros para ser atualizado
 
 
                 break;

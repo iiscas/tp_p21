@@ -3,12 +3,17 @@
 
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/jogo.c.o: ../jogo.c
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/jogo.c.o: ../jogo.h
+CMakeFiles/Prog_IsabelCastro_2018013160.dir/jogo.c.o: ../tabuleiro.h
+CMakeFiles/Prog_IsabelCastro_2018013160.dir/jogo.c.o: ../utils.h
 
+CMakeFiles/Prog_IsabelCastro_2018013160.dir/main.c.o: ../jogo.h
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/main.c.o: ../main.c
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/main.c.o: ../tabuleiro.h
+CMakeFiles/Prog_IsabelCastro_2018013160.dir/main.c.o: ../utils.h
 
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/tabuleiro.c.o: ../tabuleiro.c
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/tabuleiro.c.o: ../tabuleiro.h
+CMakeFiles/Prog_IsabelCastro_2018013160.dir/tabuleiro.c.o: ../utils.h
 
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/utils.c.o: ../utils.c
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/utils.c.o: ../utils.h

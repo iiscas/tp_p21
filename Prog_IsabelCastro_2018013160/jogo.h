@@ -5,8 +5,18 @@
 #ifndef PROG_ISABELCASTRO_2018013160_JOGO_H
 #define PROG_ISABELCASTRO_2018013160_JOGO_H
 
-typedef struct{
-    char jogada[1];
+#include "tabuleiro.h"
 
-}jogador,*pJogador;
+typedef struct jogador jogador, *pJogador;
+struct jogador {
+    char nome;
+    char jogada;
+    int nPedras,nAdicoes;
+
+};
+
+void iniciaJogo(char **tab, jogador x[], int *lin, int *col);
+pJogador criaJogadores(pJogador jogador, int *totalJogadores);
+void printJogadas();
+
 #endif //PROG_ISABELCASTRO_2018013160_JOGO_H
