@@ -44,10 +44,10 @@ void printTabuleiro(int lin, int col, char **tab) {
 char **inicializaTabuleiro(int *lin, int *col) {
 
 
-    *lin = intUniformRnd(3, 5);
-    *col=*lin;
+    *lin = intUniformRnd(3, 4); // ÀS VEZES IMPANCA E NÃO CRIA
+    *col = *lin;
 
-    printf("1-LINHAS %d COLUNAS %d\n",*lin,*col);
+    printf("1-LINHAS %d COLUNAS %d\n", *lin, *col);
     char **tab;
 
 // aloca um vetor de lin ponteiros para linhas
@@ -61,7 +61,7 @@ char **inicializaTabuleiro(int *lin, int *col) {
 // ajusta os demais ponteiros de linhas (i > 0)
     for (int i = 0; i < *lin; i++) {
 
-        tab[i] = (char *) malloc(*col * sizeof(char));
+        tab[i] = (char *) malloc(sizeof(char) * *col);
         if (tab == NULL) {
             puts("tabuleiro nao foi alocado");
             return tab;
@@ -74,7 +74,7 @@ char **inicializaTabuleiro(int *lin, int *col) {
             strcpy(&tab[i][j], "-");
         }
     }
-    printTabuleiro(*lin,*col,tab);
+    printTabuleiro(*lin, *col, tab);
 
     return tab;
 }
@@ -92,7 +92,7 @@ char **alteraNLinhas(int add, int lin, int col, char **tab) {
         }
         for (int i = lin; i < lin + add; ++i) {
             for (int j = 0; j < col; ++j) {
-                strcpy(&tabNovo[i][j], "a");
+                strcpy(&tabNovo[i][j], "-");
             }
         }
     }
@@ -100,12 +100,12 @@ char **alteraNLinhas(int add, int lin, int col, char **tab) {
     return tabNovo;
 }
 
-char **preencheTabuleiro(int lin, int col, char **tab, int lEscolhida, int cEscolhida,char letra) {
+char **preencheTabuleiro(int lin, int col, char **tab, int lEscolhida, int cEscolhida, char letra) {
 
     for (int i = 0; i < lin; ++i) {
         for (int j = 0; j < col; ++j) {
-            if(i==lEscolhida && j==cEscolhida)
-                strcpy(&tab[i][j],&letra);
+            if (i == lEscolhida && j == cEscolhida)
+                strcpy(&tab[i][j], &letra);
         }
     }
     return tab;

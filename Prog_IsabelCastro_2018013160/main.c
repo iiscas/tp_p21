@@ -25,21 +25,19 @@ void menuPrincipal() {
 
 int main() {
     void initRandom();
-    int COL=0, LIN=0;
-    int escolha = 0,totalJogadores=0;
+    int COL = 0, LIN = 0, linha = 0, coluna = 0;
+    int escolha = 0, totalJogadores = 0;
     menuPrincipal();
     char **tabuleiro;
 
 
-     jogador jogadores[2] = {
-            {'A', '-', 0,0},
-            {'B', '-', 0,0}
+    jogador jogadores[2] = {
+            {'A', '-', 0, 0},
+            {'B', '-', 0, 0}
     };
 
 
-
     int i, j;
-
 
 
     do {
@@ -48,15 +46,24 @@ int main() {
         switch (escolha) {
             case 1:
 
-                printf("----------------------\nJogo vai começar!\n----------------------");
+                printf("----------------------\nJogo vai começar!\n----------------------\n");
                 //printf("\nIntroduza o n. de linhas e colunas do tabuleiro\n>>");
                 //scanf("%d %d", &LIN, &COL);
 
-                puts("----------------------\nA criar tabuleiro...\n----------------------");
+                printf("\n----------------------\nA criar tabuleiro...\n----------------------\n");
                 sleep(1);
-                tabuleiro = inicializaTabuleiro(&LIN,&COL);
+                tabuleiro = inicializaTabuleiro(&LIN, &COL);
                 printTabuleiro(LIN, COL, tabuleiro);
-                iniciaJogo(tabuleiro,jogadores,&LIN,&COL);
+                /*while(1) {
+                    do {
+                        printf("\nJogador escolha a linha e a coluna da sua jogada!\n>>");
+                        scanf("%d %d", &linha, &coluna);
+                        fflush(stdout);
+                    } while (!(linha <= LIN && coluna <= COL) && (verificaJogada(tabuleiro, linha, coluna) == 0));
+
+                    tabuleiro = preencheTabuleiro(LIN, COL, tabuleiro, linha, coluna, 'G');
+                    printTabuleiro(LIN, COL, tabuleiro);
+                */   iniciaJogo(tabuleiro, jogadores, &LIN, &COL);
                 //printf("Pretende adicionar quantas linhas ao tabuleiro?");
                 //int newLinhas=0;
                 //scanf("%d", &newLinhas);
@@ -87,12 +94,6 @@ int main() {
 
         }
     } while (escolha != 3);
-
-
-
-
-
-
 
 
 // libera a memória da matriz
