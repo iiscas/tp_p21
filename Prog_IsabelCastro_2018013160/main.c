@@ -24,21 +24,17 @@ void menuPrincipal() {
 }
 
 int main() {
-    void initRandom();
+    //void initRandom();
     int COL = 0, LIN = 0, linha = 0, coluna = 0;
     int escolha = 0, totalJogadores = 0;
+    int i, j;
     menuPrincipal();
-    char **tabuleiro;
-
-
+    char **tabuleiro=NULL;
+    pJogada listaJogadas=NULL;
     jogador jogadores[2] = {
-            {'A', '-', 0, 0},
+            {'A', '-', 1, 1},
             {'B', '-', 0, 0}
     };
-
-
-    int i, j;
-
 
     do {
 
@@ -53,7 +49,7 @@ int main() {
                 printf("\n----------------------\nA criar tabuleiro...\n----------------------\n");
                 sleep(1);
                 tabuleiro = inicializaTabuleiro(&LIN, &COL);
-                printTabuleiro(LIN, COL, tabuleiro);
+                iniciaJogo(tabuleiro, jogadores,listaJogadas,&LIN,&COL);
                 /*while(1) {
                     do {
                         printf("\nJogador escolha a linha e a coluna da sua jogada!\n>>");
@@ -63,13 +59,13 @@ int main() {
 
                     tabuleiro = preencheTabuleiro(LIN, COL, tabuleiro, linha, coluna, 'G');
                     printTabuleiro(LIN, COL, tabuleiro);
-                */   iniciaJogo(tabuleiro, jogadores, &LIN, &COL);
-                //printf("Pretende adicionar quantas linhas ao tabuleiro?");
-                //int newLinhas=0;
-                //scanf("%d", &newLinhas);
-                //tabuleiro= alteraNLinhas(newLinhas,LIN,COL,tabuleiro);
-                //printTabuleiro(3, COL, tabuleiro); // por a fazer os valores por ponteiros para ser atualizado
-
+                */
+                /*printf("Pretende adicionar quantas linhas ao tabuleiro?");
+                int newLinhas=0;
+                scanf("%d", &newLinhas);
+                tabuleiro= alteraNLinhas(newLinhas,LIN,COL,tabuleiro);
+                printTabuleiro(3, COL, tabuleiro); // por a fazer os valores por ponteiros para ser atualizado
+                */
 
                 break;
 
@@ -99,6 +95,7 @@ int main() {
 // libera a memória da matriz
     free(tabuleiro[0]);
     free(tabuleiro);
+    free(listaJogadas);
     return 0;
 }
 

@@ -13,18 +13,27 @@ struct jogador {
     char nome;
     char jogada;
     int nPedras, nAdicoes;
-
 };
 
-void iniciaJogo(char **tab, jogador x[], int *lin, int *col);
+typedef struct jogadas noJogada,*pJogada;
+struct jogadas{
+    pJogador x; //ponteiro de estrutura
+    int linha,coluna;
+    pJogada prox;
+};
 
-pJogador criaJogadores(pJogador jogador, int *totalJogadores);
+void iniciaJogo(char **tab, jogador x[],pJogada listaJogadas,int *lin,int *col);
 
-void printJogadas();
+pJogada adicionaFimLista(pJogada lista,jogador x,int l,int c);
 
+void printJogador(jogador *x);
+
+void printListaJogadas(pJogada lista);
+
+void printJogadas(int *count, jogador x);
 int verificaJogada(char **tab, int lJogador, int cJogador);
 
-void jogadaA(char **tab, int linha, int coluna, int lin, int col, jogador x[], int jog);
+pJogada jogadaA(char **tab,int lin, int col, jogador x,pJogada listaJogadas);
 
 void jogadaB(char **tab, int linha, int coluna, int lin, int col, jogador x[], int jog);
 
