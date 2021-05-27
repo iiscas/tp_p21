@@ -124,10 +124,7 @@ void jogadaC(char **tab, int linha, int coluna, int lin, int col, jogador x[], i
 pJogada adicionaFimLista(pJogada lista, jogador x, int l, int c) {
     noJogada j;
     pJogada novaJogada, aux;
-    j.x.nome = x.nome;
-    j.x.jogada = x.jogada;
-    j.x.nPedras = x.nPedras;
-    j.x.nAdicoes = x.nAdicoes;
+    j.x=x;
     j.linha = l;
     j.coluna = c;
 
