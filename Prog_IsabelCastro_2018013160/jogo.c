@@ -34,10 +34,8 @@ void iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int *lin, int *co
 
         if (nTurnos >= 0) {
             do {
-                //printf("aqui\n");
                 printf(">>");
                 scanf("%s", &x[1].jogada);
-                //fflush(stdout);
             } while (!((int) x[1].jogada == 65));
         }
         if (toupper(x[1].jogada) == 'A') {
@@ -80,7 +78,7 @@ pJogada jogadaA(char **tab, int lin, int col, jogador x, pJogada listaJogadas) {
 
         printf("\nJogador %c escolha a linha e a coluna da sua jogada!\n>>", x.nome);
         scanf("%d %d", &linha, &coluna);
-        fflush(stdout);
+        //fflush(stdout);
         v = verificaJogada(tab, linha, coluna);
         if (v == 0)
             printf("\nPosicao ja ocupada!\n");
@@ -88,8 +86,6 @@ pJogada jogadaA(char **tab, int lin, int col, jogador x, pJogada listaJogadas) {
 
     tab = preencheTabuleiro(lin, col, tab, linha, coluna, 'G');
     listaJogadas = adicionaFimLista(listaJogadas, x, linha, coluna);
-    //printListaJogadas(listaJogadas);
-    //printTabuleiro(lin, col, tab);
     return listaJogadas;
 }
 
@@ -127,18 +123,17 @@ void jogadaC(char **tab, int linha, int coluna, int lin, int col, jogador x[], i
 
 pJogada adicionaFimLista(pJogada lista, jogador x, int l, int c) {
     noJogada j;
-
-
-    j.x->nome = x.nome;
-    j.x->jogada = x.jogada;
-
-    j.x->nPedras = x.nPedras;
-    j.x->nAdicoes = x.nAdicoes;
+    pJogada novaJogada, aux;
+    j.x.nome = x.nome;
+    j.x.jogada = x.jogada;
+    j.x.nPedras = x.nPedras;
+    j.x.nAdicoes = x.nAdicoes;
     j.linha = l;
     j.coluna = c;
-    printf("\nNome do jogador %c\n", j.x->nome);
 
-    pJogada novaJogada =  malloc(sizeof(noJogada));
+    printf("\nNome do jogador %c\n", j.x.nome);
+
+    novaJogada = malloc(sizeof(noJogada));
     if (novaJogada == NULL) {
         fprintf(stderr, "ERRO A ALOCAR MEMORIA");
         return lista;
@@ -149,25 +144,25 @@ pJogada adicionaFimLista(pJogada lista, jogador x, int l, int c) {
         printf("\naqui\n");
         lista = novaJogada;
         novaJogada->prox = NULL;
-    }
-    else {
-        pJogada aux = lista;
+    } else {
+        aux = lista;
         while (aux->prox != NULL)
             aux = aux->prox;
         aux->prox = novaJogada;
         novaJogada->prox = NULL;
     }
-    printListaJogadas(lista); // quando só tem uma jogada imprime só os dados de A mas dps
-                              // imprime o B em cima dos dados de A
+    //printListaJogadas(lista);
+    // quando só tem uma jogada imprime só os dados de A mas dps
+    // imprime o B em cima dos dados de A
     return lista;
 
 }
 
-void printJogador(jogador *x) {
-    printf("Jogador %c\n", x->nome);
-    printf("Ultima jogada %c\n", x->jogada);
-    printf("N. pedras usadas %d\n", x->nPedras);
-    printf("N. de adicoes feitas %d\n", x->nAdicoes);
+void printJogador(jogador x) {
+    printf("Jogador %c\n", x.nome);
+    printf("Ultima jogada %c\n", x.jogada);
+    printf("N. pedras usadas %d\n", x.nPedras);
+    printf("N. de adicoes feitas %d\n", x.nAdicoes);
 }
 
 void printListaJogadas(pJogada lista) {
@@ -186,3 +181,4 @@ void printListaJogadas(pJogada lista) {
         i++;
     }
 }
+
