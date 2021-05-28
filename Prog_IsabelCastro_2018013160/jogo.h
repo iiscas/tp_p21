@@ -30,15 +30,20 @@ void printJogador(jogador x);
 
 void printListaJogadas(pJogada lista);
 
-void printJogadas(int *count, jogador x);
+void printJogadas(int count, jogador x);
 
 int verificaJogada(char **tab, int lJogador, int cJogador);
 
 pJogada jogadaA(char **tab, int lin, int col, jogador x, pJogada listaJogadas);
 
-void jogadaB(char **tab, int linha, int coluna, int lin, int col, jogador x[], int jog);
+pJogada jogadaB(char **tab, int lin, int col, jogador x, pJogada listaJogadas);
 
-void jogadaC(char **tab, int linha, int coluna, int lin, int col, jogador x[], int jog);
-//void preenche(pJogada j,jogador x);
+pJogada jogadaC(char **tab, int lin, int col, jogador x, pJogada listaJogadas);
+
+pJogada jogadaD(char **tab, int lin, int col, jogador x, pJogada listaJogadas);
+
+pJogada jogadaE(char **tab, int lin, int col, jogador x, pJogada listaJogadas);
+
+void analisaPecas(char **tab,int l,int c,int *countG,int *countY,int *countR);
 
 #endif //PROG_ISABELCASTRO_2018013160_JOGO_H

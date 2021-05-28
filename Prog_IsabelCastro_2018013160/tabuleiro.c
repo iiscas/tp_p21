@@ -44,14 +44,13 @@ void printTabuleiro(int lin, int col, char **tab) {
 char **inicializaTabuleiro(int *lin, int *col) {
 
 
-    *lin = intUniformRnd(2, 4); // esta sempre a dar 5 E NÃO CRIA
+    *lin = intUniformRnd(3, 5); // esta sempre a dar 5 E NÃO CRIA
     *col = *lin;
 
-    printf("1-LINHAS %d COLUNAS %d\n", *lin, *col);
     char **tab;
 
 // aloca um vetor de lin ponteiros para linhas
-    tab = (char **) malloc(*lin * sizeof(char));
+    tab = (char **) malloc(*lin * sizeof(char *));
 
     if (tab == NULL) {
         puts("tabuleiro nao foi alocado");
@@ -60,9 +59,7 @@ char **inicializaTabuleiro(int *lin, int *col) {
 
 // ajusta os demais ponteiros de linhas (i > 0)
     for (int i = 0; i < *lin; i++) {
-        //printf("--- %d  // lin %d - col %d\n",i,*lin,*col);
         tab[i] = (char *) malloc(sizeof(char) * (*col));
-        //printf("--%lu",sizeof(tab));
         if (tab == NULL) {
             puts("tabuleiro nao foi alocado");
             return tab;
@@ -72,11 +69,7 @@ char **inicializaTabuleiro(int *lin, int *col) {
     for (int i = 0; i < *lin; i++) {
 
         for (int j = 0; j < *col; j++) {
-            //printf("linha %d - coluna % d \n",i,j);
-            //printf("---->  %c\n",tab[i][j]);
             tab[i][j] = '-'; //SEGMENTATION FAULT LINHA 4 COLUNA 0
-            //printf("---->  %c\n",tab[i][j]);
-            //strcpy(&tab[i][j], "-");
         }
     }
     return tab;
@@ -84,21 +77,23 @@ char **inicializaTabuleiro(int *lin, int *col) {
 
 char **alteraNLinhas(int add, int lin, int col, char **tab) {
 
-    char **tabNovo = realloc(tab, sizeof *tab * (lin + add));
+    char** tabNovo=tab;
+    printTabuleiro(lin,col,tabNovo);
+    tabNovo = (char **) realloc(tab, sizeof(char) * (lin + 1));
     if (tabNovo) {
-
-        //tab = tabNovo;
-        for (size_t i = 0; i < add; i++) {
-            tabNovo[lin + i] = malloc(sizeof *tabNovo[lin + i] * col);
-
+        for (int i = 0; i < lin+ 1; i++) {
+            tabNovo[i] = (char *) malloc (sizeof tab[lin + i] * col);
         }
+        printTabuleiro(lin+1,col,tabNovo);
+        //mete as linhas adicionadas bem a -
         for (int i = lin; i < lin + add; ++i) {
             for (int j = 0; j < col; ++j) {
-                tab[i][j] = '-';
+                tabNovo[i][j] = '-';
             }
         }
+        //tab = tabNovo;
     }
-
+    printTabuleiro(lin+add,col,tabNovo);
     return tabNovo;
 }
 

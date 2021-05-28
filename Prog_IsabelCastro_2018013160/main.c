@@ -32,7 +32,7 @@ int main() {
     char **tabuleiro=NULL;
     pJogada listaJogadas=NULL;
     jogador jogadores[2] = {
-            {'A', '-', 1, 1},
+            {'A', '-', 0, 0},
             {'B', '-', 0, 0}
     };
 
