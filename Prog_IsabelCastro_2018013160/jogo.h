@@ -42,7 +42,7 @@ pJogada jogadaC(char **tab, int lin, int col, jogador x, pJogada listaJogadas);
 
 pJogada jogadaD(char **tab, int lin, int col, jogador x, pJogada listaJogadas);
 
-pJogada jogadaE(char **tab, int lin, int col, jogador x, pJogada listaJogadas);
+pJogada jogadaE(char **tab, int *lin, int *col, jogador x, pJogada listaJogadas);
 
 void analisaPecas(char **tab,int l,int c,int *countG,int *countY,int *countR);
 

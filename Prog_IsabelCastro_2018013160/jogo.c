@@ -33,10 +33,10 @@ void iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int *lin, int *co
         } else if (toupper(x[0].jogada) == 'D' && x[0].nPedras == 0) {
             listaJogadas = jogadaD(tab, *lin, *col, x[0], listaJogadas);
         } else if (toupper(x[0].jogada) == 'E' && x[0].nAdicoes <= 2) {
-            listaJogadas = jogadaE(tab, *lin, *col, x[0], listaJogadas);
+            listaJogadas = jogadaE(tab, lin, col, x[0], listaJogadas);
         }
 
-
+        //printf("Linhas  %d Colunas %d\n",*lin,*col); // atualiza bem o numero de linhas
         printTabuleiro(*lin, *col, tab);
         ////////////////////////////// JOGADOR B ////////////////////////////////////////////////////
         printf("Jogador %c e a sua vez! ", x[1].nome);
@@ -62,7 +62,7 @@ void iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int *lin, int *co
         } else if (toupper(x[1].jogada) == 'D' && x[1].nPedras == 0) {
             listaJogadas = jogadaD(tab, *lin, *col, x[1], listaJogadas);
         } else if (toupper(x[1].jogada) == 'E' && x[1].nAdicoes <= 2) {
-            listaJogadas = jogadaE(tab, *lin, *col, x[1], listaJogadas);
+            listaJogadas = jogadaE(tab, lin, col, x[1], listaJogadas);
         }
 
         ///////////////////////////// FIM DO TURNO/JOGADA ///////////////////////////////////
@@ -161,24 +161,25 @@ pJogada jogadaD(char **tab, int lin, int col, jogador x, pJogada listaJogadas) {
     return listaJogadas;
 }
 
-pJogada jogadaE(char **tab, int lin, int col, jogador x, pJogada listaJogadas) {
+pJogada jogadaE(char **tab, int *lin, int *col, jogador x, pJogada listaJogadas) {
     int v;
     int linha = 0, coluna = 0;
+    char **tabuleiro=NULL;
 
     do {
         printf("\nJogador %c pretende adicionar linhas(1) ou colunas(2)\n>>", x.nome);
         scanf("%d", &linha);
         if(linha==1){
-            tab= alteraNLinhas(1,lin,col,tab);
-            printTabuleiro(lin+1,col,tab);
+            tab= alteraNLinhas(lin,col,tab);
         }
         else if(linha==2){
-            tab= alteraNLinhas(1,lin,col,tab); //altera colunas
+            tab= alteraNLinhas(lin,col,tab); //altera colunas
         }
 
     } while (!(linha <=2 && coluna ==0  && x.nAdicoes<2));
 
     listaJogadas = adicionaFimLista(listaJogadas, x, -1, -1);
+    printTabuleiro(*lin ,*col,tab);
     return listaJogadas;
 }
 

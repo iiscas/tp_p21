@@ -13,6 +13,6 @@
 
 void printTabuleiro(int lin, int col, char **tab);
 char** inicializaTabuleiro(int *lin, int *col);
-char** alteraNLinhas(int add,int lin,int col,char **tab);
+char** alteraNLinhas(int *lin,int *col,char **tab);
 char** preencheTabuleiro(int lin, int col, char **tab, int lEscolhida, int cEscolhida,char letra);
 #endif //PROG_ISABELCASTRO_2018013160_TABULEIRO_H
