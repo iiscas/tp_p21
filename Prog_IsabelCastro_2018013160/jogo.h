@@ -32,6 +32,16 @@ void printListaJogadas(pJogada lista);
 
 void printJogadas(int count, jogador x);
 
+void print_reverse_iteration(pJogada head);
+
+void printPedirEstados(pJogada x, int nTurnos,int lin,int col);
+
+void printEstados(pJogada p, int k,int lin,int col);
+
+void printReverse(pJogada head);
+
+int nNosLista(pJogada head);
+
 int verificaJogada(char **tab, int lJogador, int cJogador);
 
 pJogada jogadaA(char **tab, int lin, int col, jogador x, pJogada listaJogadas);
@@ -42,8 +52,8 @@ pJogada jogadaC(char **tab, int lin, int col, jogador x, pJogada listaJogadas);
 
 pJogada jogadaD(char **tab, int lin, int col, jogador x, pJogada listaJogadas);
 
-pJogada jogadaE(char **tab, int *lin, int *col, jogador x, pJogada listaJogadas);
+pJogada jogadaE(char **tab, int *escolha, jogador x, pJogada listaJogadas);
 
-void analisaPecas(char **tab,int l,int c,int *countG,int *countY,int *countR);
-
+void analisaPecas(char **tab, int l, int c, int *countG, int *countY, int *countR);
+void printTabuleiroEstados(int lin, int col, pJogada tab);
 #endif //PROG_ISABELCASTRO_2018013160_JOGO_H

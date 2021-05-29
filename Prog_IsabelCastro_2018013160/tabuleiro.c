@@ -79,21 +79,43 @@ char **alteraNLinhas(int *lin, int *col, char **tab) {
 
     char **tabNovo = realloc(tab, sizeof *tab * (*lin + 1));
     if (tabNovo) {
+        tab = tabNovo;
         for (int i = 0; i < 1; i++) {
-            tabNovo[*lin + i] = malloc(sizeof *tabNovo[*lin + i] * (*col));
+            tab[*lin + i] = malloc(sizeof *tabNovo[*lin + i] * (*col));
         }
         //printTabuleiro(*lin + 1, *col, tabNovo);
         //mete as linhas adicionadas bem a -
         for (int i = *lin; i < *lin + 1; ++i) {
             for (int j = 0; j < *col; ++j) {
-                tabNovo[i][j] = '-';
+                tab[i][j] = '-';
             }
         }
-        tab = tabNovo;
+
         (*lin)++;
     }
 
     //printTabuleiro(*lin, *col, tab);
+    return tab;
+}
+
+char **alteraNColunas(int *lin, int *col, char **tab) {
+
+    char **tabNovo = realloc(tab, sizeof *tab * (*col + 1));
+    if (tabNovo) {
+        tab = tabNovo;
+        for (int i = 0; i < 1; i++) {
+            tab[*col + i] = malloc(sizeof *tabNovo[*col + i] * (*lin));
+        }
+        //printTabuleiro(*lin + 1, *col, tabNovo);
+        //mete as colunas adicionadas bem a -
+        for (int i = 0; i < *lin; ++i) {
+            for (int j = *col; j < *col + 1; ++j) {
+                tab[i][j] = '-';
+            }
+        }
+        (*col)++;
+        //printTabuleiro(*lin, *col, tab);
+    }
     return tab;
 }
 
