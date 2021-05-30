@@ -196,6 +196,33 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/main.c.s
 .PHONY : main.c.s
 
+sucessaoJogadas.o: sucessaoJogadas.c.o
+
+.PHONY : sucessaoJogadas.o
+
+# target to build an object file
+sucessaoJogadas.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.o
+.PHONY : sucessaoJogadas.c.o
+
+sucessaoJogadas.i: sucessaoJogadas.c.i
+
+.PHONY : sucessaoJogadas.i
+
+# target to preprocess a source file
+sucessaoJogadas.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.i
+.PHONY : sucessaoJogadas.c.i
+
+sucessaoJogadas.s: sucessaoJogadas.c.s
+
+.PHONY : sucessaoJogadas.s
+
+# target to generate assembly for a file
+sucessaoJogadas.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.s
+.PHONY : sucessaoJogadas.c.s
+
 tabuleiro.o: tabuleiro.c.o
 
 .PHONY : tabuleiro.o
@@ -265,6 +292,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... sucessaoJogadas.o"
+	@echo "... sucessaoJogadas.i"
+	@echo "... sucessaoJogadas.s"
 	@echo "... tabuleiro.o"
 	@echo "... tabuleiro.i"
 	@echo "... tabuleiro.s"

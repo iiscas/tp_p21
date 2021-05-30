@@ -24,13 +24,14 @@ void menuPrincipal() {
 }
 
 int main() {
-    //void initRandom();
-    int COL = 0, LIN = 0, linha = 0, coluna = 0;
-    int escolha = 0, totalJogadores = 0;
-    int i, j;
+
+    int COL = 0, LIN = 0;
+    int escolha = 0;
     menuPrincipal();
+
     char **tabuleiro=NULL;
     pJogada listaJogadas=NULL;
+
     jogador jogadores[2] = {
             {'A', '-', 0, 0},
             {'B', '-', 0, 0}
@@ -43,29 +44,10 @@ int main() {
             case 1:
 
                 printf("----------------------\nJogo vai começar!\n----------------------\n");
-                //printf("\nIntroduza o n. de linhas e colunas do tabuleiro\n>>");
-                //scanf("%d %d", &LIN, &COL);
-
                 printf("\n----------------------\nA criar tabuleiro...\n----------------------\n");
                 sleep(1);
                 tabuleiro = inicializaTabuleiro(&LIN, &COL);
                 iniciaJogo(tabuleiro, jogadores,listaJogadas,&LIN,&COL);
-                /*while(1) {
-                    do {
-                        printf("\nJogador escolha a linha e a coluna da sua jogada!\n>>");
-                        scanf("%d %d", &linha, &coluna);
-                        fflush(stdout);
-                    } while (!(linha <= LIN && coluna <= COL) && (verificaJogada(tabuleiro, linha, coluna) == 0));
-
-                    tabuleiro = preencheTabuleiro(LIN, COL, tabuleiro, linha, coluna, 'G');
-                    printTabuleiro(LIN, COL, tabuleiro);
-                */
-                /*printf("Pretende adicionar quantas linhas ao tabuleiro?");
-                int newLinhas=0;
-                scanf("%d", &newLinhas);
-                tabuleiro= alteraNLinhas(newLinhas,LIN,COL,tabuleiro);
-                printTabuleiro(3, COL, tabuleiro); // por a fazer os valores por ponteiros para ser atualizado
-                */
 
                 break;
 

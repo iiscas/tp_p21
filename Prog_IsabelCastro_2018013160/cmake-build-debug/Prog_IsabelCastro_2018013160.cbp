@@ -83,6 +83,12 @@
 		<Unit filename="/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/main.c">
 			<Option target="Prog_IsabelCastro_2018013160"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/sucessaoJogadas.c">
+			<Option target="Prog_IsabelCastro_2018013160"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/sucessaoJogadas.h">
+			<Option target="Prog_IsabelCastro_2018013160"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/tabuleiro.c">
 			<Option target="Prog_IsabelCastro_2018013160"/>
 		</Unit>

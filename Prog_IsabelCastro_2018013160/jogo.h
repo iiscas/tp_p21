@@ -1,7 +1,3 @@
-//
-// Created by isabe on 18-05-2021.
-//
-
 #ifndef PROG_ISABELCASTRO_2018013160_JOGO_H
 #define PROG_ISABELCASTRO_2018013160_JOGO_H
 
@@ -28,19 +24,9 @@ pJogada adicionaFimLista(pJogada lista, jogador x, int l, int c);
 
 void printJogador(jogador x);
 
-void printListaJogadas(pJogada lista);
+int CheckLinhas(char **tab, int lin, int col);
 
-void printJogadas(int count, jogador x);
-
-void print_reverse_iteration(pJogada head);
-
-void printPedirEstados(pJogada x, int nTurnos,int lin,int col);
-
-void printEstados(pJogada p, int k,int lin,int col);
-
-void printReverse(pJogada head);
-
-int nNosLista(pJogada head);
+int checkColunas(char **tab, int lin, int col);
 
 int verificaJogada(char **tab, int lJogador, int cJogador);
 
@@ -55,5 +41,8 @@ pJogada jogadaD(char **tab, int lin, int col, jogador x, pJogada listaJogadas);
 pJogada jogadaE(char **tab, int *escolha, jogador x, pJogada listaJogadas);
 
 void analisaPecas(char **tab, int l, int c, int *countG, int *countY, int *countR);
-void printTabuleiroEstados(int lin, int col, pJogada tab);
+
+void printPedirEstados(pJogada x, int nTurnos, int lin, int col);
+
+pJogada opcaoEscolhida(char **tab,jogador x,pJogada listaJogadas,int lin,int col,int *escolha);
 #endif //PROG_ISABELCASTRO_2018013160_JOGO_H
