@@ -16,6 +16,7 @@ struct jogadas {
     jogador x; //pq é que nao pode ser *pJogador?
     int linha, coluna;
     pJogada prox;
+    pJogada prev;
 };
 
 void iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int *lin, int *col);
@@ -40,7 +41,7 @@ pJogada jogadaD(char **tab, int lin, int col, jogador x, pJogada listaJogadas);
 
 pJogada jogadaE(char **tab, int *escolha, jogador x, pJogada listaJogadas);
 
-void analisaPecas(char **tab, int l, int c, int *countG, int *countY, int *countR);
+void procuraVencedor(pJogada listaJogadas,int x,int tipo);
 
 void printPedirEstados(pJogada x, int nTurnos, int lin, int col);
 

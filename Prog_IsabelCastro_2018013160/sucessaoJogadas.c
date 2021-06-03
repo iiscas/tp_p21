@@ -106,3 +106,30 @@ void printTabuleiroEstados(int lin, int col, pJogada tabAtual, pJogada head, int
         tabAtual = tabAtual->prox;
     }
 }
+
+pJogada reverterListaJogadas(pJogada head) {
+    pJogada nova = NULL;
+    pJogada anterior = NULL;
+    pJogada atual = head;
+    pJogada prox = NULL;
+    while (atual != NULL) {
+        // Store next
+        prox = atual->prox;
+
+        // Reverse current node's pointer
+        atual->prox = anterior;
+
+        // Move pointers one position ahead.
+        anterior = atual;
+        atual = prox;
+    }
+    nova = anterior;
+
+    /*printListaJogadas(nova);
+    printf("\n AQUIII\n");
+    printListaJogadas(head);
+*/
+    return nova;
+}
+
+

@@ -38,7 +38,8 @@ void iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int *lin, int *co
         }
         a = CheckLinhas(tab, *lin, *col);
         printTabuleiro(*lin, *col, tab);
-
+        if (a != -1)
+            procuraVencedor(listaJogadas, a, 0);
         ////////////////////////////// JOGADOR B ////////////////////////////////////////////////////
         printf("Jogador %c e a sua vez! ", x[1].nome);
         printPedirEstados(listaJogadas, nTurnos, *lin, *col); // ARRANJAR FORMA DE IDENTIFICAR QUANDO AUMENTA AS LINHAS
@@ -63,6 +64,8 @@ void iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int *lin, int *co
         }
 
         a = CheckLinhas(tab, *lin, *col);
+        if (a != -1)
+            procuraVencedor(listaJogadas, a, 0);
         ///////////////////////////// FIM DO TURNO/JOGADA ///////////////////////////////////
         printListaJogadas(listaJogadas);
         nTurnos++;
@@ -197,21 +200,6 @@ void printJogador(jogador x) {
     printf("N. de adicoes feitas %d\n", x.nAdicoes);
 }
 
-
-void analisaPecas(char **tab, int l, int c, int *countG, int *countY, int *countR) {
-
-    for (int i = 0; i < l; i++) {
-        for (int j = 0; j < c; j++) {
-            if (tab[i][j] == 'G')
-                *countG++;
-            else if (tab[i][j] == 'Y')
-                *countY++;
-            else if (tab[i][j] == 'R')
-                *countR++;
-        }
-    }
-}
-
 void printPedirEstados(pJogada x, int nTurnos, int lin, int col) {
     int k = 0;
     char escolha;
@@ -250,9 +238,11 @@ int CheckLinhas(char **tab, int lin, int col) {
         }
 
     }
-    if (count == col)
+    if (count == col) {
         printf("HA MATCH NA LINHA %d \n", linha);
-    return linha;
+        return linha;
+    } else
+        return -1;
 }
 
 int checkColunas(char **tab, int lin, int col) {
@@ -285,6 +275,29 @@ pJogada opcaoEscolhida(char **tab, jogador x, pJogada listaJogadas, int lin, int
         listaJogadas = jogadaE(tab, escolha, x, listaJogadas);
     }
     return listaJogadas;
+}
+
+void procuraVencedor(pJogada listaJogadas, int x, int tipo) {
+
+    pJogada revertido = NULL;
+    revertido= copiaListaJogadas(listaJogadas);
+
+
+    printf("\n AQUIII\n");
+    printListaJogadas(listaJogadas);
+
+    while (revertido != NULL) {
+        if (tipo == 0) { //procura ultima jogada na linha x
+            if (revertido->linha == x) {
+                printf("\nUltima jogada do jogador %c\n na linha/coluna:%d %d \n", revertido->x.nome, revertido->linha,
+                       revertido->coluna);
+                return;
+            }
+        }
+        revertido = revertido->prox;
+    }
+    free(revertido);
+
 }
 
 /*int checkDiagonais(char **tab, int lin, int col) {

@@ -16,4 +16,8 @@ int nNosLista(pJogada head);
 
 void printTabuleiroEstados(int lin, int col, pJogada tabAtual, pJogada head, int n);
 
+pJogada reverterListaJogadas(pJogada head);
+
+pJogada copiaListaJogadas(pJogada listaJogadas);
+
 #endif //MAIN_C_SUCESSAOJOGADAS_H
