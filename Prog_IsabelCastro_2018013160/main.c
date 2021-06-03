@@ -27,7 +27,7 @@ int main() {
 
     int COL = 0, LIN = 0;
     int escolha = 0;
-    menuPrincipal();
+
 
     char **tabuleiro=NULL;
     pJogada listaJogadas=NULL;
@@ -38,7 +38,7 @@ int main() {
     };
 
     do {
-
+        menuPrincipal();
         scanf("%d", &escolha);
         switch (escolha) {
             case 1:
@@ -49,7 +49,7 @@ int main() {
                 tabuleiro = inicializaTabuleiro(&LIN, &COL);
                 iniciaJogo(tabuleiro, jogadores,listaJogadas,&LIN,&COL);
 
-                break;
+               break;
 
             case 2:;
 
@@ -66,7 +66,9 @@ int main() {
                 printf(">>");
                 break;
             default:
-                //printf(">>");
+                //printf("\nPretende jogar de novo?\n");
+                //scanf("%d",&escolha);
+                //break;
                 break;
 
 

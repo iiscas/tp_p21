@@ -26,9 +26,7 @@ pJogada adicionaFimLista(pJogada lista, jogador x, int l, int c, int tamTab[2]);
 
 void printJogador(jogador x);
 
-int CheckLinhas(char **tab, int tamTab[2]);
-
-int checkColunas(char **tab, int tamTab[2]);
+int checkTabuleiro(char **tab, int tamTab[2],int *tipo);
 
 int verificaJogada(char **tab, int lJogador, int cJogador);
 
@@ -47,5 +45,7 @@ pJogada jogadaC(char **tab, int tamTab[2], jogador x, pJogada listaJogadas);
 pJogada jogadaD(char **tab, int tamTab[2], jogador x, pJogada listaJogadas);
 
 pJogada jogadaE(char **tab, int *escolha, jogador x, pJogada listaJogadas, int tamTab[2]);
+
+void escolheJogada(pJogador x, int nTurnos);
 
 #endif //PROG_ISABELCASTRO_2018013160_JOGO_H
