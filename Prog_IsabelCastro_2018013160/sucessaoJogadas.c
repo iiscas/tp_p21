@@ -25,13 +25,14 @@ void printListaJogadas(pJogada lista) {
         printf("--%d--\n", i);
         printJogador(aux->x);
         printf("Posicao da jogada no tabuleiro: %d %d\n", aux->linha, aux->coluna);
+        printf("Tamanho do tabuleiro na jogada: [%d][%d]\n", aux->tamTab[0], aux->tamTab[1]);
         printf("--------------------\n");
         aux = aux->prox;
         i++;
     }
 }
 
-void printEstados(pJogada p, int n, int lin, int col) {
+void printEstados(pJogada p, int n, int tamTab[2]) {
     int tam = nNosLista(p);
     pJogada temp = p;
 
@@ -40,21 +41,31 @@ void printEstados(pJogada p, int n, int lin, int col) {
 
     temp = p;
     // tirar o (tam-n+1)x no desde o inicio
-    for (int i = 1; i < tam - n + 1; i++)
-        temp = temp->prox;
+    if (n == 1) {
+        temp = temp->prev;
 
-    //imprimeReverso(temp);
-    printTabuleiroEstados(lin, col, temp, p, n);
+    } else {
+        for (int i = 0; i < tam - n + 1; i++)
+            temp = temp->prox;
+    }
+    //imprimeReverso(p);
+    printTabuleiroEstados(tamTab,temp, p, n);
 }
 
-void imprimeReverso(pJogada x) {
+void printListaJogadasReverso(pJogada x) {
     if (x == NULL)
         return;
-    // imprime tudo
-    imprimeReverso(x->prox);
-    // imprime inicio
-    printf("\nJogador %c \nPosicao da jogada no tabuleiro: %d %d\n", x->x.nome, x->linha, x->coluna);
-    printf("--------------------\n");
+
+    pJogada atual = x;
+    while (atual->prox != NULL) { // vai procurar o ultimo no
+        atual = atual->prox; //continua ate ter chegar la
+    }
+    while (atual != NULL) { // inicia no ultimo no e ate ao primeiro
+        printf("\n--------------------\nJogador %c \nPosicao da jogada no tabuleiro: %d %d\n", atual->x.nome,
+               atual->linha, atual->coluna);
+        printf("--------------------\n");
+
+    }
 }
 
 int nNosLista(pJogada p) {
@@ -68,12 +79,11 @@ int nNosLista(pJogada p) {
     return count;
 }
 
-void printTabuleiroEstados(int lin, int col, pJogada tabAtual, pJogada head, int n) {
-
+void printTabuleiroEstados(int tamTab[2],pJogada tabAtual, pJogada head, int n) {
     char **tabAux = NULL;
-    tabAux = inicializaTabuleiroEstados(&lin, &col);
-
+    tabAux = inicializaTabuleiroEstados(&tamTab[0], &tamTab[1]);
     int a;
+
     a = nNosLista(head) - n;
     if (head == NULL)
         return;
@@ -82,54 +92,43 @@ void printTabuleiroEstados(int lin, int col, pJogada tabAtual, pJogada head, int
     while (head != tabAtual) {
         if (head->x.jogada == 'A') {
             tabAux[head->linha][head->coluna] = 'G';
+        } else if (head->x.jogada == 'B') {
+            tabAux[head->linha][head->coluna] = 'Y';
+        } else if (head->x.jogada == 'C') {
+            tabAux[head->linha][head->coluna] = 'R';
+        } else if (head->x.jogada == 'D') {
+            tabAux[head->linha][head->coluna] = 'P';
         }
+
         head = head->prox;
     }
-    printTabuleiro(lin, col, tabAux);
-
+    printTabuleiro(tamTab, tabAux);
     //preencher com jogadas pedidas
     while (tabAtual) {
-
         printf("\t -----------------------------------\n\t\t\t\t  Jogada %d\t\t\t\t\t\n\t -----------------------------------\n",
                a + 1);
         if (tabAtual->x.jogada == 'A') {
             tabAux[tabAtual->linha][tabAtual->coluna] = 'G';
+        } else if (tabAtual->x.jogada == 'B') {
+            tabAux[tabAtual->linha][tabAtual->coluna] = 'Y';
+        } else if (tabAtual->x.jogada == 'C') {
+            tabAux[tabAtual->linha][tabAtual->coluna] = 'R';
+        } else if (tabAtual->x.jogada == 'D') {
+            tabAux[tabAtual->linha][tabAtual->coluna] = 'P';
         }
-        for (int i = 0; i < lin; i++) {
-            for (int j = 0; j < col; j++) {
-                if (tabAux[i][j] != 'G')
+        for (int i = 0; i < tamTab[0]; i++) {
+            for (int j = 0; j < tamTab[1]; j++) {
+                if (tabAux[i][j] < 65)
                     tabAux[i][j] = '-';
             }
         }
-        printTabuleiro(lin, col, tabAux);
+        printTabuleiro(tamTab, tabAux);
         a++;
         tabAtual = tabAtual->prox;
     }
+    free(tabAtual);
 }
 
-pJogada reverterListaJogadas(pJogada head) {
-    pJogada nova = NULL;
-    pJogada anterior = NULL;
-    pJogada atual = head;
-    pJogada prox = NULL;
-    while (atual != NULL) {
-        // Store next
-        prox = atual->prox;
 
-        // Reverse current node's pointer
-        atual->prox = anterior;
-
-        // Move pointers one position ahead.
-        anterior = atual;
-        atual = prox;
-    }
-    nova = anterior;
-
-    /*printListaJogadas(nova);
-    printf("\n AQUIII\n");
-    printListaJogadas(head);
-*/
-    return nova;
-}
 
 

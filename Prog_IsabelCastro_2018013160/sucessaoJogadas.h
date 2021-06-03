@@ -8,16 +8,13 @@ void printListaJogadas(pJogada lista);
 
 void printJogadas(int count, jogador x);
 
-void printEstados(pJogada p, int k, int lin, int col);
+void printEstados(pJogada p, int k, int tamTab[2]);
 
-void imprimeReverso(pJogada head);
+void printListaJogadasReverso(pJogada head);
 
 int nNosLista(pJogada head);
 
-void printTabuleiroEstados(int lin, int col, pJogada tabAtual, pJogada head, int n);
+void printTabuleiroEstados(int tamTab[2],pJogada tabAtual, pJogada head, int n);
 
-pJogada reverterListaJogadas(pJogada head);
-
-pJogada copiaListaJogadas(pJogada listaJogadas);
 
 #endif //MAIN_C_SUCESSAOJOGADAS_H

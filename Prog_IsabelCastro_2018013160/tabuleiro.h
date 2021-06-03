@@ -8,17 +8,17 @@
 #include "jogo.h"
 
 
-void printTabuleiro(int lin, int col, char **tab);
+void printTabuleiro(int tam[2], char **tab);
 
 char **inicializaTabuleiro(int *lin, int *col);
 
 char **inicializaTabuleiroEstados(int *lin, int *col);
 
-char **alteraNLinhas(int *lin, int *col, char **tab);
+char **alteraNLinhas(int tam[2], char **tab);
 
-char **alteraNColunas(int *lin, int *col, char **tab);
+char **alteraNColunas(int tam[2], char **tab);
 
-char **preencheTabuleiro(int lin, int col, char **tab, int lEscolhida, int cEscolhida, char letra);
+char **preencheTabuleiro(int tam[2], char **tab, int lEscolhida, int cEscolhida, char letra);
 
 
 #endif //PROG_ISABELCASTRO_2018013160_TABULEIRO_H

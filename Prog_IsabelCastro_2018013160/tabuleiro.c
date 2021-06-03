@@ -5,10 +5,10 @@
 #include "tabuleiro.h"
 
 
-void printTabuleiro(int lin, int col, char **tab) {
+void printTabuleiro(int tam[2], char **tab) {
 
     //imprime identificacao das colunas x0
-    for (int i = 0; i < col; i++) {
+    for (int i = 0; i < tam[1]; i++) {
         if (i == 0) {
             printf("       x%d", i);
         } else {
@@ -18,14 +18,14 @@ void printTabuleiro(int lin, int col, char **tab) {
 
     //divisoria 1
     printf("\n     ");
-    for (int i = 0; i < col * 7; i++) {
+    for (int i = 0; i < tam[1] * 7; i++) {
         printf("-");
     }
     printf("\n");
 
     //imprime dados da matriz
-    for (int i = 0; i < lin; i++) {
-        for (int x = 0; x < col; x++) {
+    for (int i = 0; i < tam[0]; i++) {
+        for (int x = 0; x < tam[1]; x++) {
             if (x == 0) {
                 printf("x%d   | ", i); //imprime identificacao das linhas x0
             }
@@ -33,7 +33,7 @@ void printTabuleiro(int lin, int col, char **tab) {
         }
         //divisoria entre linhas -----
         printf("\n     ");
-        for (int i = 0; i < col * 7; i++) {
+        for (int i = 0; i < tam[1] * 7; i++) {
             printf("-");
         }
         printf("\n");
@@ -140,54 +140,54 @@ char **inicializaTabuleiroEstados(int *lin, int *col) {
     return tab;
 }
 
-char **alteraNLinhas(int *lin, int *col, char **tab) {
+char **alteraNLinhas(int tam[2], char **tab) {
 
-    char **tabNovo = realloc(tab, sizeof *tab * (*lin + 1));
+    char **tabNovo = realloc(tab, sizeof *tab * (tam[0] + 1));
     if (tabNovo) {
         tab = tabNovo;
         for (int i = 0; i < 1; i++) {
-            tab[*lin + i] = malloc(sizeof *tabNovo[*lin + i] * (*col));
+            tab[tam[0] + i] = malloc(sizeof *tabNovo[tam[0]+ i] * (tam[1]));
         }
         //printTabuleiro(*lin + 1, *col, tabNovo);
         //mete as linhas adicionadas bem a -
-        for (int i = *lin; i < *lin + 1; ++i) {
-            for (int j = 0; j < *col; ++j) {
+        for (int i = tam[0]; i < tam[0] + 1; ++i) {
+            for (int j = 0; j < tam[1]; ++j) {
                 tab[i][j] = '-';
             }
         }
 
-        (*lin)++;
+        (tam[0])++;
     }
-
-    //printTabuleiro(*lin, *col, tab);
+    //int tam[2]={*lin,*col};
+    //printTabuleiro(tam, tab);
     return tab;
 }
 
-char **alteraNColunas(int *lin, int *col, char **tab) {
+char **alteraNColunas(int tam[2], char **tab) {
 
-    char **tabNovo = realloc(tab, sizeof *tab * (*col + 1));
+    char **tabNovo = realloc(tab, sizeof *tab * (tam[1] + 1));
     if (tabNovo) {
         tab = tabNovo;
         for (int i = 0; i < 1; i++) {
-            tab[*col + i] = malloc(sizeof *tabNovo[*col + i] * (*lin));
+            tab[tam[1] + i] = malloc(sizeof *tabNovo[tam[1] + i] * (tam[0]));
         }
         //printTabuleiro(*lin + 1, *col, tabNovo);
         //mete as colunas adicionadas bem a -
-        for (int i = 0; i < *lin; ++i) {
-            for (int j = *col; j < *col + 1; ++j) {
+        for (int i = 0; i < tam[0]; ++i) {
+            for (int j = tam[1]; j < tam[1] + 1; ++j) {
                 tab[i][j] = '-';
             }
         }
-        (*col)++;
+        (tam[1])++;
         //printTabuleiro(*lin, *col, tab);
     }
     return tab;
 }
 
-char **preencheTabuleiro(int lin, int col, char **tab, int lEscolhida, int cEscolhida, char letra) {
+char **preencheTabuleiro(int tam[2], char **tab, int lEscolhida, int cEscolhida, char letra) {
 
-    for (int i = 0; i < lin; ++i) {
-        for (int j = 0; j < col; ++j) {
+    for (int i = 0; i < tam[0]; ++i) {
+        for (int j = 0; j < tam[1]; ++j) {
             if (i == lEscolhida && j == cEscolhida)
                 tab[i][j] = letra;
         }
