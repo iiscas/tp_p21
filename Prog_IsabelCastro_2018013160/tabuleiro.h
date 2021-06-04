@@ -14,9 +14,9 @@ char **inicializaTabuleiro(int *lin, int *col);
 
 char **inicializaTabuleiroEstados(int *lin, int *col);
 
-char **alteraNLinhas(int tam[2], char **tab);
+char **alteraNLinhas(int *tam, char **tab);
 
-char **alteraNColunas(int tam[2], char **tab);
+char **alteraNColunas(int *tam, char **tab);
 
 char **preencheTabuleiro(int tam[2], char **tab, int lEscolhida, int cEscolhida, char letra);
 

@@ -63,7 +63,7 @@ int main() {
                     putchar(c);
 
                 fclose(f);
-                printf(">>");
+                printf("\n");
                 break;
             default:
                 //printf("\nPretende jogar de novo?\n");

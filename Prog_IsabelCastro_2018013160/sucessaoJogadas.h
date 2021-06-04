@@ -14,7 +14,7 @@ void printListaJogadasReverso(pJogada head);
 
 int nNosLista(pJogada head);
 
-void printTabuleiroEstados(int tamTab[2],pJogada tabAtual, pJogada head, int n);
+void printTabuleiroEstados(pJogada tabAtual, pJogada head, int n);
 
 
 #endif //MAIN_C_SUCESSAOJOGADAS_H

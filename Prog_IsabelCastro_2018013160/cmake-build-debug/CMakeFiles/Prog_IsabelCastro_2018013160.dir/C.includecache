@@ -6,33 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/jogo.c
-jogo.h
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/jogo.h
-sucessaoJogadas.h
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/sucessaoJogadas.h
-
 /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/jogo.h
 tabuleiro.h
 /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/tabuleiro.h
 ctype.h
 -
-
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/main.c
-stdio.h
--
-stdlib.h
--
-string.h
--
 sys/unistd.h
 -
-tabuleiro.h
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/tabuleiro.h
-jogo.h
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/jogo.h
-utils.h
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/utils.h
+
+/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/sucessaoJogadas.c
+sucessaoJogadas.h
+/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/sucessaoJogadas.h
 
 /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/sucessaoJogadas.h
 jogo.h

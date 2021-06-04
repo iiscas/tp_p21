@@ -3,7 +3,7 @@
 
 #include "tabuleiro.h"
 #include <ctype.h>
-
+#include <sys/unistd.h>
 typedef struct jogador jogador, *pJogador;
 struct jogador {
     char nome;
@@ -44,7 +44,7 @@ pJogada jogadaC(char **tab, int tamTab[2], jogador x, pJogada listaJogadas);
 
 pJogada jogadaD(char **tab, int tamTab[2], jogador x, pJogada listaJogadas);
 
-pJogada jogadaE(char **tab, int *escolha, jogador x, pJogada listaJogadas, int tamTab[2]);
+pJogada jogadaE(char **tab, int *escolha, pJogador x, pJogada listaJogadas, int tamTab[2]);
 
 void escolheJogada(pJogador x, int nTurnos);
 

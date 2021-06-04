@@ -140,7 +140,7 @@ char **inicializaTabuleiroEstados(int *lin, int *col) {
     return tab;
 }
 
-char **alteraNLinhas(int tam[2], char **tab) {
+char **alteraNLinhas(int *tam, char **tab) {
 
     char **tabNovo = realloc(tab, sizeof *tab * (tam[0] + 1));
     if (tabNovo) {
@@ -150,8 +150,8 @@ char **alteraNLinhas(int tam[2], char **tab) {
         }
         //printTabuleiro(*lin + 1, *col, tabNovo);
         //mete as linhas adicionadas bem a -
-        for (int i = tam[0]; i < tam[0] + 1; ++i) {
-            for (int j = 0; j < tam[1]; ++j) {
+        for (int i = tam[0]; i < tam[0] + 1; i++) {
+            for (int j = 0; j < tam[1]; j++) {
                 tab[i][j] = '-';
             }
         }
@@ -160,10 +160,11 @@ char **alteraNLinhas(int tam[2], char **tab) {
     }
     //int tam[2]={*lin,*col};
     //printTabuleiro(tam, tab);
+    //printf("\n<--dentro do altera \n");
     return tab;
 }
 
-char **alteraNColunas(int tam[2], char **tab) {
+char **alteraNColunas(int *tam, char **tab) {
 
     char **tabNovo = realloc(tab, sizeof *tab * (tam[1] + 1));
     if (tabNovo) {
@@ -173,13 +174,14 @@ char **alteraNColunas(int tam[2], char **tab) {
         }
         //printTabuleiro(*lin + 1, *col, tabNovo);
         //mete as colunas adicionadas bem a -
-        for (int i = 0; i < tam[0]; ++i) {
-            for (int j = tam[1]; j < tam[1] + 1; ++j) {
+        for (int i = 0; i < tam[0]; i++) {
+            for (int j = tam[1]; j < tam[1] +1 ; j++) {
                 tab[i][j] = '-';
             }
         }
         (tam[1])++;
-        //printTabuleiro(*lin, *col, tab);
+        printTabuleiro(tam, tab);
+        printf("\n<--dentro do altera \n");
     }
     return tab;
 }

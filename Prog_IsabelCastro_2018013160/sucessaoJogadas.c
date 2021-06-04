@@ -5,7 +5,7 @@ void printJogadas(int count, jogador x) {
         printf("\n---------------------------------\nSó pode jogar uma peça verde! (A)\n---------------------------------\n");
 
     } else if (count >= 1) {
-        printf("\n----------------------\nJa pode fazer as seguintes jogadas\n----------------------\n"
+        printf("\n-----------------------------------\nJa pode fazer as seguintes jogadas\n-----------------------------------\n"
                "(A)- Colocar uma peça Verde numa célula vazia\n"
                "(B)- Trocar uma peça Verde que esteja colocada no tabuleiro por uma peça Amarela\n"
                "(C)- Trocar uma peça Amarela que esteja colocada no tabuleiro por uma peça Vermelha\n");
@@ -49,7 +49,7 @@ void printEstados(pJogada p, int n, int tamTab[2]) {
             temp = temp->prox;
     }
     //imprimeReverso(p);
-    printTabuleiroEstados(tamTab,temp, p, n);
+    printTabuleiroEstados(temp, p, n);
 }
 
 void printListaJogadasReverso(pJogada x) {
@@ -79,9 +79,10 @@ int nNosLista(pJogada p) {
     return count;
 }
 
-void printTabuleiroEstados(int tamTab[2],pJogada tabAtual, pJogada head, int n) {
+void printTabuleiroEstados(pJogada tabAtual, pJogada head, int n) {
     char **tabAux = NULL;
-    tabAux = inicializaTabuleiroEstados(&tamTab[0], &tamTab[1]);
+
+    tabAux = inicializaTabuleiroEstados(&head->tamTab[0], &head->tamTab[1]);
     int a;
 
     a = nNosLista(head) - n;
@@ -98,11 +99,19 @@ void printTabuleiroEstados(int tamTab[2],pJogada tabAtual, pJogada head, int n) 
             tabAux[head->linha][head->coluna] = 'R';
         } else if (head->x.jogada == 'D') {
             tabAux[head->linha][head->coluna] = 'P';
+        } else if (head->x.jogada == 'E') { //fazer aqui um realloc para ter espaço para inserir a linha
+            if (head->tamTab[0] < head->prox->tamTab[0]) {//foi alterado a linha na proxima
+                printf("aqui\n");
+                for (int j = 0; head->tamTab[1]; j++) {
+                    tabAux[head->tamTab[0]][j] = '-';
+                }
+            }
         }
-
         head = head->prox;
     }
-    printTabuleiro(tamTab, tabAux);
+    printTabuleiro(head->tamTab, tabAux);
+    fflush(stdout);
+    printf("aqui\n");
     //preencher com jogadas pedidas
     while (tabAtual) {
         printf("\t -----------------------------------\n\t\t\t\t  Jogada %d\t\t\t\t\t\n\t -----------------------------------\n",
@@ -116,13 +125,13 @@ void printTabuleiroEstados(int tamTab[2],pJogada tabAtual, pJogada head, int n) 
         } else if (tabAtual->x.jogada == 'D') {
             tabAux[tabAtual->linha][tabAtual->coluna] = 'P';
         }
-        for (int i = 0; i < tamTab[0]; i++) {
-            for (int j = 0; j < tamTab[1]; j++) {
+        for (int i = 0; i < tabAtual->tamTab[0]; i++) {
+            for (int j = 0; j < tabAtual->tamTab[1]; j++) {
                 if (tabAux[i][j] < 65)
                     tabAux[i][j] = '-';
             }
         }
-        printTabuleiro(tamTab, tabAux);
+        printTabuleiro(tabAtual->tamTab, tabAux);
         a++;
         tabAtual = tabAtual->prox;
     }
