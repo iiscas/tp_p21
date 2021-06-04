@@ -79,7 +79,7 @@ void printTabuleiro1(int lin, int col, char tab[lin][col]) {
 
 char **inicializaTabuleiro(int *lin, int *col) {
 
-    *lin = intUniformRnd(3, 5); // esta sempre a dar 5 E NÃO CRIA
+    *lin = intUniformRnd(2, 3); // esta sempre a dar 5 E NÃO CRIA
     *col = *lin;
 
     char **tab;

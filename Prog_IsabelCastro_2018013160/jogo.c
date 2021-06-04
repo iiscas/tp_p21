@@ -24,12 +24,12 @@ void iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int *lin, int *co
         listaJogadas = opcaoEscolhida(tab, x[0], listaJogadas, tamTabuleiro, &escolha);
         if (escolha == 1) {
             tab = alteraNLinhas(tamTabuleiro, tab);
-            escolha=0;
+            escolha = 0;
         } else if (escolha == 2) {
             //printf("111  --TAMANHO DO TABULEIRO: %d %d \n",tamTabuleiro[0],tamTabuleiro[1]);
             tab = alteraNColunas(tamTabuleiro, tab);
             //printf("TAMANHO DO TABULEIRO: %d %d \n",tamTabuleiro[0],tamTabuleiro[1]);//altera colunas
-            escolha=0;
+            escolha = 0;
         }
         printTabuleiro(tamTabuleiro, tab);
 
@@ -53,10 +53,10 @@ void iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int *lin, int *co
         listaJogadas = opcaoEscolhida(tab, x[1], listaJogadas, tamTabuleiro, &escolha);
         if (escolha == 1) {
             tab = alteraNLinhas(tamTabuleiro, tab);
-            escolha=0;
+            escolha = 0;
         } else if (escolha == 2) {
             tab = alteraNColunas(tamTabuleiro, tab); //altera colunas
-            escolha=0;
+            escolha = 0;
         }
         printTabuleiro(tamTabuleiro, tab);
         //verifica se há algum vencedor
@@ -69,7 +69,7 @@ void iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int *lin, int *co
         fflush(stdout);
 
         ///////////////////////////// FIM DO TURNO/JOGADA ///////////////////////////////////
-       // printListaJogadas(listaJogadas);
+        // printListaJogadas(listaJogadas);
         nTurnos++;
     }
     printf("\nVoltando ao menu inicial.....\n\n");
@@ -155,8 +155,8 @@ pJogada jogadaD(char **tab, int tamTab[2], jogador x, pJogada listaJogadas) {
 pJogada jogadaE(char **tab, int *escolha, pJogador x, pJogada listaJogadas, int tamTab[2]) {
     int v;
     int linha = 0, temp[2];
-    temp[0]=tamTab[0];
-    temp[1]=tamTab[1];
+    temp[0] = tamTab[0];
+    temp[1] = tamTab[1];
 
     do {
         printf("\nJogador %c pretende adicionar linhas(1) ou colunas(2)\n>>", x->nome);
@@ -164,9 +164,9 @@ pJogada jogadaE(char **tab, int *escolha, pJogador x, pJogada listaJogadas, int 
     } while (!(linha <= 2 && x->nAdicoes < 2));
     *escolha = linha;
     x->nAdicoes++;
-    if(linha==1)
+    if (linha == 1)
         temp[0]++;
-    else if(linha==2)
+    else if (linha == 2)
         temp[1]++;
     listaJogadas = adicionaFimLista(listaJogadas, *x, -1, -1, temp);
     printTabuleiro(tamTab, tab);
@@ -243,7 +243,10 @@ void printPedirEstados(pJogada x, int nTurnos, int tamTab[2]) {
 }
 
 int checkTabuleiro(char **tab, int tamTab[2], int *tipo) {
-    int count = 1, linha = 0, coluna = 0, count1 = 1;
+    int count = 1, linha = 0, coluna = 0;
+    int count1 = 1, count2 = 1, count3 = 1;
+    int diag1 = 0, diag2 = 0, matchD = 0;
+
 
     //check se há match nas linhas
     for (int i = 0; i < tamTab[0]; i++) {
@@ -269,6 +272,32 @@ int checkTabuleiro(char **tab, int tamTab[2], int *tipo) {
 
     }
 
+
+    if (tamTab[0] == tamTab[1]) { //so procura nas diagonais se for quadrado
+        //check se há match na diagonal principal (00,11,22,33,44)
+        for (int i = 0; i < tamTab[0] - 1; i++) {
+            if (tab[i][i] == tab[i + 1][i + 1] & tab[i][i] != '-') {
+                count2++;
+                diag1 = i;
+                matchD = 1;
+
+            }
+        }
+
+
+        if (matchD != 1) {
+            //check se há match na diagonal secundaria se nao houver na principal (00,11,22,33,44)
+            int col = tamTab[1] - 1;
+            for (int i = 0; i < tamTab[0] - 1; i++, col--) {
+                if (tab[i][col] == tab[i + 1][col - 1] && tab[i][col] != '-' && col != 0) {
+                    count3++;
+                    diag2 = col;
+                }
+            }
+        }
+    }
+
+
     if (count1 == tamTab[0]) {
         printf("\n-------------------\nColuna %d completa!\n-------------------\n", coluna);
         *tipo = 1;
@@ -277,6 +306,14 @@ int checkTabuleiro(char **tab, int tamTab[2], int *tipo) {
         printf("\n-------------------\nLinha %d completa!\n-------------------\n", linha);
         *tipo = 0;
         return linha;
+    } else if (count2 == tamTab[0]) {
+        printf("\n-------------------\nDiagonal principal completa!\n-------------------\n");
+        *tipo = 2;
+        return diag1;
+    } else if (count3 == tamTab[1]) {
+        printf("\n-------------------\nDiagonal secundaria completa!\n-------------------\n");
+        *tipo = 3;
+        return diag2;
     } else
         return -1;
 }
@@ -309,19 +346,29 @@ int procuraVencedor(pJogada listaJogadas, int x, int tipo) {
         if (tipo == 0) { //procura ultima jogada na linha x
             if (atual->linha == x) {
                 printf("\n-------------------------------------\nJogador %c e o vencedor!\n", atual->x.nome);
-                printf("Jogada vencedora na posicao: [%d][%d]\n-------------------------------------\n", atual->linha,atual->coluna);
+                printf("Jogada vencedora na posicao: [%d][%d]\n-------------------------------------\n", atual->linha,
+                       atual->coluna);
                 return 1;
             }
         } else if (tipo == 1) { //procura ultima jogada na coluna x
             if (atual->coluna == x) {
                 printf("\n-------------------------------------\nJogador %c e o vencedor!\n", atual->x.nome);
-                printf("Jogada vencedora na posicao: [%d][%d]\n-------------------------------------\n", atual->linha,atual->coluna);
+                printf("Jogada vencedora na posicao: [%d][%d]\n-------------------------------------\n", atual->linha,
+                       atual->coluna);
                 return 1;
             }
-        } else if (tipo == 2) { //procura ultima jogada nas diagonais
-            if (atual->coluna == x && atual->linha == x) {
+        } else if (tipo == 2) { //procura ultima jogada na diagonal principal
+            if (atual->coluna == atual->linha) {
                 printf("\n-------------------------------------\nJogador %c e o vencedor!\n", atual->x.nome);
-                printf("Jogada vencedora na posicao: [%d][%d]\n-------------------------------------\n", atual->linha,atual->coluna);
+                printf("Jogada vencedora na posicao: [%d][%d]\n-------------------------------------\n", atual->linha,
+                       atual->coluna);
+                return 1;
+            }
+        } else if (tipo == 3) { //procura ultima jogada na diagonal secundária
+            if (atual->coluna == -(atual->linha) - 1 + atual->tamTab[1]) {
+                printf("\n-------------------------------------\nJogador %c e o vencedor!\n", atual->x.nome);
+                printf("Jogada vencedora na posicao: [%d][%d]\n-------------------------------------\n", atual->linha,
+                       atual->coluna);
                 return 1;
             }
         }
@@ -345,39 +392,4 @@ void escolheJogada(pJogador x, int nTurnos) {
     }
 }
 
-
-
-
-
-/*int checkDiagonais(char **tab, int lin, int col) {
-    int match = 1;
-    int ganhou = 0;
-
-    // Check the first diagonal.
-    for (int i = 0; i < lin && !ganhou; lin++) {
-        if (tab[lin][lin] != 'G') {
-            match = 0;
-        }
-        if (tab[lin][lin] != 'Y') {
-            match = 0;
-        }
-        if (tab[lin][lin] != 'R') {
-            match = 0;
-        }
-    }
-
-    if (match != 1) {
-        int coluna = lin - 1;
-        for (row = 0; row < tab && !won; row++, col--) {
-            if (tab[row][col] != mark) {
-                match = 0;
-            }
-        }
-    }
-    won = match;
-
-
-    return 0;
-}
- */
 #pragma clang diagnostic pop
