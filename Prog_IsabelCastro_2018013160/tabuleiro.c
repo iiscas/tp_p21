@@ -146,19 +146,18 @@ char **alteraNLinhas(int *tam, char **tab) {
     if (tabNovo) {
         tab = tabNovo;
         for (int i = 0; i < 1; i++) {
-            tab[tam[0] + i] = malloc(sizeof *tabNovo[tam[0]+ i] * (tam[1]));
+            tab[tam[0] + i] = malloc(sizeof *tabNovo[tam[0] + i] * (tam[1]));
         }
-        //printTabuleiro(*lin + 1, *col, tabNovo);
+        (tam[0])++;
         //mete as linhas adicionadas bem a -
-        for (int i = tam[0]; i < tam[0] + 1; i++) {
+        for (int i = tam[0] - 1; i < tam[0]; i++) {
             for (int j = 0; j < tam[1]; j++) {
                 tab[i][j] = '-';
             }
         }
-
-        (tam[0])++;
     }
     //int tam[2]={*lin,*col};
+    //printf("\n<--dentro do altera \n");
     //printTabuleiro(tam, tab);
     //printf("\n<--dentro do altera \n");
     return tab;
@@ -172,16 +171,17 @@ char **alteraNColunas(int *tam, char **tab) {
         for (int i = 0; i < 1; i++) {
             tab[tam[1] + i] = malloc(sizeof *tabNovo[tam[1] + i] * (tam[0]));
         }
-        //printTabuleiro(*lin + 1, *col, tabNovo);
-        //mete as colunas adicionadas bem a -
+        (tam[1])++;
+        //printTabuleiro(tam, tab);
         for (int i = 0; i < tam[0]; i++) {
-            for (int j = tam[1]; j < tam[1] +1 ; j++) {
-                tab[i][j] = '-';
+            for (int j = 0; j < tam[1]; j++) {
+                if (tab[i][j]!='G' && tab[i][j]!='Y' && tab[i][j]!='R' && tab[i][j]!='P')
+                    tab[i][j] = '-';
             }
         }
-        (tam[1])++;
-        printTabuleiro(tam, tab);
-        printf("\n<--dentro do altera \n");
+        //tab[0][tam[1]] = '-'; //nem assim funciona wtf
+        //printTabuleiro(tam, tab);
+        //printf("\n<--dentro do altera \n");
     }
     return tab;
 }

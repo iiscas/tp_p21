@@ -34,7 +34,7 @@ int procuraVencedor(pJogada listaJogadas, int x, int tipo);
 
 void printPedirEstados(pJogada x, int nTurnos, int tamTab[2]);
 
-pJogada opcaoEscolhida(char **tab, jogador x, pJogada listaJogadas, int tamTab[2], int *escolha);
+pJogada opcaoEscolhida(char **tab, pJogador x, pJogada listaJogadas, int tamTab[2], int *escolha);
 
 pJogada jogadaA(char **tab, int tamTab[2], jogador x, pJogada listaJogadas);
 
@@ -42,7 +42,7 @@ pJogada jogadaB(char **tab, int tamTab[2], jogador x, pJogada listaJogadas);
 
 pJogada jogadaC(char **tab, int tamTab[2], jogador x, pJogada listaJogadas);
 
-pJogada jogadaD(char **tab, int tamTab[2], jogador x, pJogada listaJogadas);
+pJogada jogadaD(char **tab, int tamTab[2], pJogador  x, pJogada listaJogadas);
 
 pJogada jogadaE(char **tab, int *escolha, pJogador x, pJogada listaJogadas, int tamTab[2]);
 
