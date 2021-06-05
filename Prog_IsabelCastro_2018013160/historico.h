@@ -1,5 +1,5 @@
-#ifndef MAIN_C_SUCESSAOJOGADAS_H
-#define MAIN_C_SUCESSAOJOGADAS_H
+#ifndef MAIN_C_HISTORICO_H
+#define MAIN_C_HISTORICO_H
 
 #include "jogo.h"
 #include "tabuleiro.h"
@@ -16,5 +16,5 @@ int nNosLista(pJogada head);
 
 void printTabuleiroEstados(pJogada tabAtual, pJogada head, int n);
 
-
-#endif //MAIN_C_SUCESSAOJOGADAS_H
+void printPedirEstados(pJogada x, int nTurnos, int tamTab[2]);
+#endif //MAIN_C_HISTORICO_H

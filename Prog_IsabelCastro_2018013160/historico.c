@@ -1,4 +1,4 @@
-#include "sucessaoJogadas.h"
+#include "historico.h"
 
 void printJogadas(int count, jogador x) {
     if (count == 0) {
@@ -34,13 +34,13 @@ void printListaJogadas(pJogada lista) {
 
 void printEstados(pJogada p, int n, int tamTab[2]) {
     int tam = nNosLista(p);
-    pJogada temp = p;
+    pJogada temp = p; //lista ligada
 
     // ver se n de sucessoes é menor que o tamanho da lista
     if (tam < n) return;
 
     temp = p;
-    // tirar o (tam-n+1)x no desde o inicio
+    // tirar o (tam-n+1)x nó desde o inicio
     for (int i = 1; i < tam - n + 1; i++) //JA FUNCIONA??? SUPOSTAMENTE
         temp = temp->prox;
 
@@ -87,7 +87,6 @@ void printTabuleiroEstados(pJogada tabAtual, pJogada head, int n) {
     printf("Tamanho da lista ligada %d\n", a);
     if (head == NULL)
         return;
-
     //preencher com jogadas antes do pedido
     while (head != tabAtual) {
         if (head->x.jogada == 'A') {
@@ -98,14 +97,12 @@ void printTabuleiroEstados(pJogada tabAtual, pJogada head, int n) {
             tabAux[head->linha][head->coluna] = 'R';
         } else if (head->x.jogada == 'D') {
             tabAux[head->linha][head->coluna] = 'P';
-        } else if (head->x.jogada == 'E') { //fazer aqui um realloc para ter espaço para inserir a linha
-            //foi alterado a linha na proxima
+        } else if (head->x.jogada == 'E') { //fazer aqui um realloc para ter espaço para inserir a linha //foi alterado a linha na proxima
             if (head->prev->tamTab[0] != head->tamTab[0])
                 tabAux = alteraNLinhas(head->prev->tamTab, tabAux);
             if (head->prev->tamTab[1] != head->tamTab[1])
                 tabAux = alteraNColunas(head->prev->tamTab, tabAux);
-        }
-        head = head->prox;
+        }head = head->prox;
     }
     printTabuleiro(head->tamTab, tabAux);
     //preencher com jogadas pedidas
@@ -148,5 +145,26 @@ void printTabuleiroEstados(pJogada tabAtual, pJogada head, int n) {
 }
 
 
+void printPedirEstados(pJogada x, int nTurnos, int tamTab[2]) {
+    int k = 0;
+    char escolha;
+    int count = 0;
+    do {
+        printf("\nPretende visualizar o estado do tabuleiro? (S)/(N):\n>>");
+        scanf(" %c", &escolha);
+    } while (!(escolha == 'S' || escolha == 'N'));
 
+    if (escolha == 'S') {
+        if (nNosLista(x) > 0) {
+            do {
+                printf("\nQuantas jogadas quer visualizar?\n>> ");
+                scanf("%d", &k);
+            } while (k > nNosLista(x));
+            printEstados(x, k, tamTab);
+        } else {
+            printf("\n-----------------------\nNao ha jogadas ainda!\nJogo vai continuar...\n-----------------------\n");
+            return;
+        }
+    } else return;
+}
 

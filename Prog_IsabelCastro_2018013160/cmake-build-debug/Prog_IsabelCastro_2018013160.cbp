@@ -74,6 +74,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/historico.c">
+			<Option target="Prog_IsabelCastro_2018013160"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/historico.h">
+			<Option target="Prog_IsabelCastro_2018013160"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/jogo.c">
 			<Option target="Prog_IsabelCastro_2018013160"/>
 		</Unit>
@@ -81,12 +87,6 @@
 			<Option target="Prog_IsabelCastro_2018013160"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/main.c">
-			<Option target="Prog_IsabelCastro_2018013160"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/sucessaoJogadas.c">
-			<Option target="Prog_IsabelCastro_2018013160"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/sucessaoJogadas.h">
 			<Option target="Prog_IsabelCastro_2018013160"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/tabuleiro.c">

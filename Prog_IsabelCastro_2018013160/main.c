@@ -24,13 +24,13 @@ void menuPrincipal() {
 }
 
 int main() {
-
-    int COL = 0, LIN = 0;
+    initRandom();
+    int tamTabuleiro[2];
     int escolha = 0;
+    char pc;
 
-
-    char **tabuleiro=NULL;
-    pJogada listaJogadas=NULL;
+    char **tabuleiro = NULL;
+    pJogada listaJogadas = NULL;
     //pJogador listaJogadores=NULL;
     jogador jogadores[2] = {
             {'A', '-', 0, 0},
@@ -42,14 +42,17 @@ int main() {
         scanf("%d", &escolha);
         switch (escolha) {
             case 1:
-
-                printf("----------------------\nJogo vai começar!\n----------------------\n");
+                do {
+                    printf("------------------------------------\nPretende jogar contra o computador?\nSim(S) / Nao(N)\n------------------------------------\n>> ");
+                    scanf(" %c", &pc);
+                } while (pc!='N' && pc!='S');
+                printf("\n----------------------\nJogo vai começar!\n----------------------\n");
                 printf("\n----------------------\nA criar tabuleiro...\n----------------------\n");
                 sleep(1);
-                tabuleiro = inicializaTabuleiro(&LIN, &COL);
-                iniciaJogo(tabuleiro, jogadores,listaJogadas,&LIN,&COL);
+                tabuleiro = inicializaTabuleiro(&tamTabuleiro[0],&tamTabuleiro[1]);
+                iniciaJogo(tabuleiro, jogadores, listaJogadas,tamTabuleiro,pc);
 
-               break;
+                break;
 
             case 2:;
 

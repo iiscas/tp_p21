@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.o"
   "CMakeFiles/Prog_IsabelCastro_2018013160.dir/jogo.c.o"
   "CMakeFiles/Prog_IsabelCastro_2018013160.dir/main.c.o"
-  "CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.o"
   "CMakeFiles/Prog_IsabelCastro_2018013160.dir/tabuleiro.c.o"
   "CMakeFiles/Prog_IsabelCastro_2018013160.dir/utils.c.o"
   "Prog_IsabelCastro_2018013160.exe"

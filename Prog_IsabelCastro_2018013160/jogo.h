@@ -4,6 +4,7 @@
 #include "tabuleiro.h"
 #include <ctype.h>
 #include <sys/unistd.h>
+
 typedef struct jogador jogador, *pJogador;
 struct jogador {
     char nome;
@@ -20,19 +21,17 @@ struct jogadas {
     pJogada prev;
 };
 
-void iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int *lin, int *col);
+void iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int tamTab[2], char pc);
 
 pJogada adicionaFimLista(pJogada lista, jogador x, int l, int c, int tamTab[2]);
 
 void printJogador(jogador x);
 
-int checkTabuleiro(char **tab, int tamTab[2],int *tipo);
+int checkTabuleiro(char **tab, int tamTab[2], int *tipo);
 
 int verificaJogada(char **tab, int lJogador, int cJogador);
 
 int procuraVencedor(pJogada listaJogadas, int x, int tipo);
-
-void printPedirEstados(pJogada x, int nTurnos, int tamTab[2]);
 
 pJogada opcaoEscolhida(char **tab, pJogador x, pJogada listaJogadas, int tamTab[2], int *escolha);
 
@@ -42,10 +41,14 @@ pJogada jogadaB(char **tab, int tamTab[2], jogador x, pJogada listaJogadas);
 
 pJogada jogadaC(char **tab, int tamTab[2], jogador x, pJogada listaJogadas);
 
-pJogada jogadaD(char **tab, int tamTab[2], pJogador  x, pJogada listaJogadas);
+pJogada jogadaD(char **tab, int tamTab[2], pJogador x, pJogada listaJogadas);
 
 pJogada jogadaE(char **tab, int *escolha, pJogador x, pJogada listaJogadas, int tamTab[2]);
 
 void escolheJogada(pJogador x, int nTurnos);
+
+void escolheJogadaPC(pJogador x, int nTurnos);
+
+pJogada opcaoEscolhidaPC(char **tab, pJogador x, pJogada listaJogadas, int tamTab[2], int *escolha);
 
 #endif //PROG_ISABELCASTRO_2018013160_JOGO_H

@@ -41,42 +41,6 @@ void printTabuleiro(int tam[2], char **tab) {
     printf("\n");
 }
 
-void printTabuleiro1(int lin, int col, char tab[lin][col]) {
-
-    //imprime identificacao das colunas x0
-    for (int i = 0; i < col; i++) {
-        if (i == 0) {
-            printf("       x%d", i);
-        } else {
-            printf("     x%d", i);
-        }
-    }
-
-    //divisoria 1
-    printf("\n     ");
-    for (int i = 0; i < col * 7; i++) {
-        printf("-");
-    }
-    printf("\n");
-
-    //imprime dados da matriz
-    for (int i = 0; i < lin; i++) {
-        for (int x = 0; x < col; x++) {
-            if (x == 0) {
-                printf("x%d   | ", i); //imprime identificacao das linhas x0
-            }
-            printf("%c   |  ", tab[i][x]);
-        }
-        //divisoria entre linhas -----
-        printf("\n     ");
-        for (int i = 0; i < col * 7; i++) {
-            printf("-");
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
-
 char **inicializaTabuleiro(int *lin, int *col) {
 
     *lin = intUniformRnd(2, 3); // esta sempre a dar 5 E NÃO CRIA

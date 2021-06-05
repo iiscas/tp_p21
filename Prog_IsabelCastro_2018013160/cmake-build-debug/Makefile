@@ -142,6 +142,33 @@ Prog_IsabelCastro_2018013160/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/build
 .PHONY : Prog_IsabelCastro_2018013160/fast
 
+historico.o: historico.c.o
+
+.PHONY : historico.o
+
+# target to build an object file
+historico.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.o
+.PHONY : historico.c.o
+
+historico.i: historico.c.i
+
+.PHONY : historico.i
+
+# target to preprocess a source file
+historico.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.i
+.PHONY : historico.c.i
+
+historico.s: historico.c.s
+
+.PHONY : historico.s
+
+# target to generate assembly for a file
+historico.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.s
+.PHONY : historico.c.s
+
 jogo.o: jogo.c.o
 
 .PHONY : jogo.o
@@ -195,33 +222,6 @@ main.s: main.c.s
 main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/main.c.s
 .PHONY : main.c.s
-
-sucessaoJogadas.o: sucessaoJogadas.c.o
-
-.PHONY : sucessaoJogadas.o
-
-# target to build an object file
-sucessaoJogadas.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.o
-.PHONY : sucessaoJogadas.c.o
-
-sucessaoJogadas.i: sucessaoJogadas.c.i
-
-.PHONY : sucessaoJogadas.i
-
-# target to preprocess a source file
-sucessaoJogadas.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.i
-.PHONY : sucessaoJogadas.c.i
-
-sucessaoJogadas.s: sucessaoJogadas.c.s
-
-.PHONY : sucessaoJogadas.s
-
-# target to generate assembly for a file
-sucessaoJogadas.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.s
-.PHONY : sucessaoJogadas.c.s
 
 tabuleiro.o: tabuleiro.c.o
 
@@ -286,15 +286,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Prog_IsabelCastro_2018013160"
+	@echo "... historico.o"
+	@echo "... historico.i"
+	@echo "... historico.s"
 	@echo "... jogo.o"
 	@echo "... jogo.i"
 	@echo "... jogo.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... sucessaoJogadas.o"
-	@echo "... sucessaoJogadas.i"
-	@echo "... sucessaoJogadas.s"
 	@echo "... tabuleiro.o"
 	@echo "... tabuleiro.i"
 	@echo "... tabuleiro.s"

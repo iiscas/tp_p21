@@ -128,18 +128,18 @@ CMakeFiles/Prog_IsabelCastro_2018013160.dir/jogo.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Prog_IsabelCastro_2018013160.dir/jogo.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/jogo.c -o CMakeFiles/Prog_IsabelCastro_2018013160.dir/jogo.c.s
 
-CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.o: CMakeFiles/Prog_IsabelCastro_2018013160.dir/flags.make
-CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.o: ../sucessaoJogadas.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.o -c /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/sucessaoJogadas.c
+CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.o: CMakeFiles/Prog_IsabelCastro_2018013160.dir/flags.make
+CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.o: ../historico.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.o -c /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/historico.c
 
-CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/sucessaoJogadas.c > CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.i
+CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/historico.c > CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.i
 
-CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/sucessaoJogadas.c -o CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.s
+CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/historico.c -o CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.s
 
 # Object files for target Prog_IsabelCastro_2018013160
 Prog_IsabelCastro_2018013160_OBJECTS = \
@@ -147,7 +147,7 @@ Prog_IsabelCastro_2018013160_OBJECTS = \
 "CMakeFiles/Prog_IsabelCastro_2018013160.dir/tabuleiro.c.o" \
 "CMakeFiles/Prog_IsabelCastro_2018013160.dir/utils.c.o" \
 "CMakeFiles/Prog_IsabelCastro_2018013160.dir/jogo.c.o" \
-"CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.o"
+"CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.o"
 
 # External object files for target Prog_IsabelCastro_2018013160
 Prog_IsabelCastro_2018013160_EXTERNAL_OBJECTS =
@@ -156,7 +156,7 @@ Prog_IsabelCastro_2018013160.exe: CMakeFiles/Prog_IsabelCastro_2018013160.dir/ma
 Prog_IsabelCastro_2018013160.exe: CMakeFiles/Prog_IsabelCastro_2018013160.dir/tabuleiro.c.o
 Prog_IsabelCastro_2018013160.exe: CMakeFiles/Prog_IsabelCastro_2018013160.dir/utils.c.o
 Prog_IsabelCastro_2018013160.exe: CMakeFiles/Prog_IsabelCastro_2018013160.dir/jogo.c.o
-Prog_IsabelCastro_2018013160.exe: CMakeFiles/Prog_IsabelCastro_2018013160.dir/sucessaoJogadas.c.o
+Prog_IsabelCastro_2018013160.exe: CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.o
 Prog_IsabelCastro_2018013160.exe: CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make
 Prog_IsabelCastro_2018013160.exe: CMakeFiles/Prog_IsabelCastro_2018013160.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable Prog_IsabelCastro_2018013160.exe"
