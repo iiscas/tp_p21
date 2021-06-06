@@ -45,10 +45,11 @@ pJogada jogadaD(char **tab, int tamTab[2], pJogador x, pJogada listaJogadas);
 
 pJogada jogadaE(char **tab, int *escolha, pJogador x, pJogada listaJogadas, int tamTab[2]);
 
-void escolheJogada(pJogador x, int nTurnos);
+void escolheJogada(pJogador x, int nTurnos,char **tab,int tam[2]);
 
-void escolheJogadaPC(pJogador x, int nTurnos);
+void escolheJogadaPC(pJogador x, int nTurnos,char **tab,int tam[2]);
 
 pJogada opcaoEscolhidaPC(char **tab, pJogador x, pJogada listaJogadas, int tamTab[2], int *escolha);
 
+int countPecas(char **tab, char jogada,int tam[2]);
 #endif //PROG_ISABELCASTRO_2018013160_JOGO_H

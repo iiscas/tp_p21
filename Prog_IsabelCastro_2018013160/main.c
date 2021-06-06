@@ -28,22 +28,23 @@ int main() {
     initRandom();
     int tamTabuleiro[2];
     int escolha = 0;
-    char pc,fichJog[25];
-
+    char pc, fichJog[25];
+    //pJogador listaJogadores=NULL;
     char **tabuleiro = NULL;
     pJogada listaJogadas = NULL;
-    //pJogador listaJogadores=NULL;
-    jogador jogadores[2] = {
-            {'A', '-', 0, 0},
-            {'B', '-', 0, 0}
-    };
-
     do {
+
+        jogador jogadores[2] = {
+                {'A', '-', 0, 0},
+                {'B', '-', 0, 0}
+        };
         menuPrincipal();
         scanf("%d", &escolha);
         switch (escolha) {
             case 1:
+
                 do {
+
                     printf("------------------------------------\nPretende jogar contra o computador?\nSim(S) / Nao(N)\n------------------------------------\n>> ");
                     scanf(" %c", &pc);
                 } while (pc != 'N' && pc != 'S');
@@ -51,14 +52,15 @@ int main() {
                 printf("\n----------------------\nA criar tabuleiro...\n----------------------\n");
                 sleep(1);
                 tabuleiro = inicializaTabuleiro(&tamTabuleiro[0], &tamTabuleiro[1]);
-                listaJogadas=iniciaJogo(tabuleiro, jogadores, listaJogadas, tamTabuleiro, pc);
+                listaJogadas = iniciaJogo(tabuleiro, jogadores, listaJogadas, tamTabuleiro, pc);
                 //printListaJogadas(listaJogadas);
                 do {
                     printf("-----------------------------------------------------------\nIndique o nome do ficheiro(xxx.txt) para gravar as jogadas\n-----------------------------------------------------------\n>> ");
                     fscanf(stdin, "%s", fichJog);
                 } while (!strstr(fichJog, ".txt"));
-                if(gravaRelJogadas(listaJogadas, pc,fichJog))
+                if (gravaRelJogadas(listaJogadas, pc, fichJog))
                     puts("\nRelatorio guardado!\n");
+                escolha=3;
                 break;
 
             case 2:;
@@ -84,13 +86,14 @@ int main() {
 
 
         }
+
     } while (escolha != 3);
 
-
-// libera a memória da matriz
     free(tabuleiro[0]);
     free(tabuleiro);
     free(listaJogadas);
+// libera a memória da matriz
+
     return 0;
 }
 
