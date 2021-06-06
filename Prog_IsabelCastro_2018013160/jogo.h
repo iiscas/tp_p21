@@ -21,7 +21,7 @@ struct jogadas {
     pJogada prev;
 };
 
-void iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int tamTab[2], char pc);
+pJogada iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int tamTab[2], char pc);
 
 pJogada adicionaFimLista(pJogada lista, jogador x, int l, int c, int tamTab[2]);
 

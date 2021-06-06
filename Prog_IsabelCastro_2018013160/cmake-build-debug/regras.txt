@@ -1,8 +1,23 @@
-----------------------
--  regras do jogo    -
-----------------------
-
--Pode jogar com pessoas
-ou o computador.
--So pode jogar 3 tipos
-de peças.
+---------------------------------
+---------------------------------
+-        regras do jogo         -
+---------------------------------
+---------------------------------
+- Pode jogar com pessoas ou o
+computador.
+---------------------------------
+- So pode jogar 4 tipos de peças,
+G,Y,R ou P
+---------------------------------
+- Peça verde (G),amarela(Y) ou
+vermelha(R)
+---------------------------------
+- Jogar uma pedra para bloquear
+a linha/coluna (P)
+---------------------------------
+- Adicionar lin/col ao tabuleiro
+---------------------------------
+- Ganha o ultimo a preencher
+uma linha,coluna ou diagonal
+---------------------------------
+---------------------------------

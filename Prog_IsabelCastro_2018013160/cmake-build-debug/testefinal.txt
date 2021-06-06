@@ -1,0 +1,142 @@
+--------------------
+Lista de jogadas
+--------------------
+- Numero de jogadas: 17
+- Jogou contra o computador!
+----------------------------------------
+--0--
+Jogador A
+Ultima jogada A
+N. pedras usadas 0
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 0 0
+Tamanho do tabuleiro na jogada: [3][3]
+----------------------------------------
+--1--
+Jogador B
+Ultima jogada A
+N. pedras usadas 0
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 0 2
+Tamanho do tabuleiro na jogada: [3][3]
+----------------------------------------
+--2--
+Jogador A
+Ultima jogada B
+N. pedras usadas 0
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 0 2
+Tamanho do tabuleiro na jogada: [3][3]
+----------------------------------------
+--3--
+Jogador B
+Ultima jogada E
+N. pedras usadas 0
+N. de adicoes feitas 1
+Posicao da jogada no tabuleiro: -1 -1
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--4--
+Jogador A
+Ultima jogada A
+N. pedras usadas 0
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 0 1
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--5--
+Jogador B
+Ultima jogada B
+N. pedras usadas 0
+N. de adicoes feitas 1
+Posicao da jogada no tabuleiro: 3 2
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--6--
+Jogador A
+Ultima jogada A
+N. pedras usadas 0
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 1 0
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--7--
+Jogador B
+Ultima jogada C
+N. pedras usadas 0
+N. de adicoes feitas 1
+Posicao da jogada no tabuleiro: 3 0
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--8--
+Jogador A
+Ultima jogada A
+N. pedras usadas 0
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 1 0
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--9--
+Jogador B
+Ultima jogada B
+N. pedras usadas 0
+N. de adicoes feitas 1
+Posicao da jogada no tabuleiro: 0 2
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--10--
+Jogador A
+Ultima jogada A
+N. pedras usadas 0
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 1 1
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--11--
+Jogador B
+Ultima jogada C
+N. pedras usadas 0
+N. de adicoes feitas 1
+Posicao da jogada no tabuleiro: 1 1
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--12--
+Jogador A
+Ultima jogada A
+N. pedras usadas 0
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 2 0
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--13--
+Jogador B
+Ultima jogada C
+N. pedras usadas 0
+N. de adicoes feitas 1
+Posicao da jogada no tabuleiro: 1 2
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--14--
+Jogador A
+Ultima jogada A
+N. pedras usadas 0
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 2 1
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--15--
+Jogador B
+Ultima jogada D
+N. pedras usadas 1
+N. de adicoes feitas 1
+Posicao da jogada no tabuleiro: 0 1
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--16--
+Jogador A
+Ultima jogada A
+N. pedras usadas 0
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 2 2
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------

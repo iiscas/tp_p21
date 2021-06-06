@@ -5,6 +5,7 @@
 #include "tabuleiro.h"
 #include "jogo.h"
 #include "utils.h"
+#include "historico.h"
 
 #define MENU "menu.txt"
 #define REGRAS "regras.txt"
@@ -27,7 +28,7 @@ int main() {
     initRandom();
     int tamTabuleiro[2];
     int escolha = 0;
-    char pc;
+    char pc,fichJog[25];
 
     char **tabuleiro = NULL;
     pJogada listaJogadas = NULL;
@@ -45,17 +46,23 @@ int main() {
                 do {
                     printf("------------------------------------\nPretende jogar contra o computador?\nSim(S) / Nao(N)\n------------------------------------\n>> ");
                     scanf(" %c", &pc);
-                } while (pc!='N' && pc!='S');
+                } while (pc != 'N' && pc != 'S');
                 printf("\n----------------------\nJogo vai começar!\n----------------------\n");
                 printf("\n----------------------\nA criar tabuleiro...\n----------------------\n");
                 sleep(1);
-                tabuleiro = inicializaTabuleiro(&tamTabuleiro[0],&tamTabuleiro[1]);
-                iniciaJogo(tabuleiro, jogadores, listaJogadas,tamTabuleiro,pc);
-
+                tabuleiro = inicializaTabuleiro(&tamTabuleiro[0], &tamTabuleiro[1]);
+                listaJogadas=iniciaJogo(tabuleiro, jogadores, listaJogadas, tamTabuleiro, pc);
+                //printListaJogadas(listaJogadas);
+                do {
+                    printf("-----------------------------------------------------------\nIndique o nome do ficheiro(xxx.txt) para gravar as jogadas\n-----------------------------------------------------------\n>> ");
+                    fscanf(stdin, "%s", fichJog);
+                } while (!strstr(fichJog, ".txt"));
+                if(gravaRelJogadas(listaJogadas, pc,fichJog))
+                    puts("\nRelatorio guardado!\n");
                 break;
 
             case 2:;
-
+                printf("\n");
                 FILE *f;
                 char c;
                 if ((f = fopen("regras.txt", "r")) == NULL) {
@@ -66,7 +73,8 @@ int main() {
                     putchar(c);
 
                 fclose(f);
-                printf("\n");
+                printf("\n\n");
+                sleep(1);
                 break;
             default:
                 //printf("\nPretende jogar de novo?\n");

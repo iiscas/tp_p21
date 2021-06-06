@@ -7,7 +7,8 @@
 #include "jogo.h"
 #include "historico.h"
 
-void iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int tamTabuleiro[2], char pc) {
+pJogada iniciaJogo(char **tab, jogador x[], pJogada lista, int tamTabuleiro[2], char pc) {
+    pJogada listaJogadas=lista;
     int nTurnos = 0, a = 0, escolha = 0;
     //int tamTabuleiro[2] = {*lin, *col};
     int tipoVencedor = 0;
@@ -90,6 +91,7 @@ void iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int tamTabuleiro[
     printListaJogadas(listaJogadas);
     printf("\n\nVoltando ao menu inicial.....\n\n");
     sleep(1);
+    return listaJogadas;
 }
 
 int verificaJogada(char **tab, int lJogador, int cJogador) {
@@ -318,7 +320,7 @@ pJogada opcaoEscolhida(char **tab, pJogador x, pJogada listaJogadas, int tamTab[
 int procuraVencedor(pJogada listaJogadas, int x, int tipo) {
     if (listaJogadas == NULL)
         return -1;
-
+    jogador vencedor;
     pJogada atual = listaJogadas;
     while (atual->prox != NULL) { // vai procurar o ultimo no
         atual = atual->prox; //continua ate ter chegar la

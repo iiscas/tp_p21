@@ -13,6 +13,7 @@ CMakeFiles/Prog_IsabelCastro_2018013160.dir/jogo.c.o: ../jogo.h
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/jogo.c.o: ../tabuleiro.h
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/jogo.c.o: ../utils.h
 
+CMakeFiles/Prog_IsabelCastro_2018013160.dir/main.c.o: ../historico.h
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/main.c.o: ../jogo.h
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/main.c.o: ../main.c
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/main.c.o: ../tabuleiro.h

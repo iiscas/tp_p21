@@ -16,9 +16,7 @@ void printJogadas(int count, jogador x) {
 
 void printListaJogadas(pJogada lista) {
     int i = 1;
-    if (lista == NULL) {
-        puts("lista vazia");
-    }
+    if (lista == NULL) return;
     pJogada aux = lista;
     printf("\n--------------------\nLista de jogadas\n--------------------\n");
     while (aux != NULL) {
@@ -33,6 +31,7 @@ void printListaJogadas(pJogada lista) {
 }
 
 void printEstados(pJogada p, int n, int tamTab[2]) {
+    if (p == NULL) return;
     int tam = nNosLista(p);
     pJogada temp = NULL; //lista ligada
     // ver se n de sucessoes é menor que o tamanho da lista
@@ -42,8 +41,6 @@ void printEstados(pJogada p, int n, int tamTab[2]) {
     for (int i = 1; i < tam - n + 1; i++) //JA FUNCIONA??? SUPOSTAMENTE
         temp = temp->prox;
 
-    //printf("JOGADOR %c posicao %d %d \n", temp->x.nome, temp->linha, temp->coluna);
-    //imprimeReverso(p);
     printTabuleiroEstados(temp, p, n);
 }
 
@@ -66,7 +63,6 @@ void printListaJogadasReverso(pJogada x) {
 int nNosLista(pJogada p) {
     int count = 0;
     pJogada atual = p;
-
     while (atual != NULL) {
         count++;
         atual = atual->prox;
@@ -74,17 +70,13 @@ int nNosLista(pJogada p) {
     return count;
 }
 
-void printTabuleiroEstados(pJogada tabAtual, pJogada head, int n) {
+void printTabuleiroEstados(pJogada tabAtual, pJogada listaJ, int n) {
+    if (listaJ == NULL) return;
     char **tabAux = NULL;
-
-    tabAux = inicializaTabuleiroEstados(&head->tamTab[0], &head->tamTab[1]);
-    int a;
-    a = nNosLista(head);
-    printf("Tamanho da lista ligada %d\n", a);
+    pJogada head = listaJ;
+    int a, tam[2];
     a = nNosLista(head) - n;
-    printf("Tamanho da lista ligada %d\n", a);
-    if (head == NULL)
-        return;
+    tabAux = inicializaTabuleiroEstados(&head->tamTab[0], &head->tamTab[1]);
     //preencher com jogadas antes do pedido
     while (head != tabAtual) {
         if (head->x.jogada == 'A') {
@@ -95,15 +87,22 @@ void printTabuleiroEstados(pJogada tabAtual, pJogada head, int n) {
             tabAux[head->linha][head->coluna] = 'R';
         } else if (head->x.jogada == 'D') {
             tabAux[head->linha][head->coluna] = 'P';
-        } else if (head->x.jogada =='E') { //fazer aqui um realloc para ter espaço para inserir a linha //foi alterado a linha na proxima
-            if (head->prev->tamTab[0] != head->tamTab[0])
-                tabAux = alteraNLinhas(head->prev->tamTab, tabAux);
-            if (head->prev->tamTab[1] != head->tamTab[1])
-                tabAux = alteraNColunas(head->prev->tamTab, tabAux);
+        } else if (head->x.jogada ==
+                   'E') { //fazer aqui um realloc para ter espaço para inserir a linha //foi alterado a linha na proxima
+            if (head->prev->tamTab[0] != head->tamTab[0]) {
+                tam[0] = head->prev->tamTab[0];
+                tam[1] = head->prev->tamTab[1];
+                tabAux = alteraNLinhas(tam, tabAux);
+            }
+            if (head->prev->tamTab[1] != head->tamTab[1]) {
+                tam[0] = head->prev->tamTab[0];
+                tam[1] = head->prev->tamTab[1];
+                tabAux = alteraNColunas(tam, tabAux);
+            }
         }
         for (int i = 0; i < head->tamTab[0]; i++) {
             for (int j = 0; j < head->tamTab[1]; j++) {
-                if (tabAux[i][j]!='G' && tabAux[i][j]!='Y' && tabAux[i][j]!='R' && tabAux[i][j]!='P')
+                if (tabAux[i][j] != 'G' && tabAux[i][j] != 'Y' && tabAux[i][j] != 'R' && tabAux[i][j] != 'P')
                     tabAux[i][j] = '-';
             }
         }
@@ -123,22 +122,20 @@ void printTabuleiroEstados(pJogada tabAtual, pJogada head, int n) {
         } else if (tabAtual->x.jogada == 'D') {
             tabAux[tabAtual->linha][tabAtual->coluna] = 'P';
         } else if (tabAtual->x.jogada == 'E') { //fazer aqui um realloc para ter espaço para inserir a linha
-            if (tabAtual->prev->tamTab[0] != tabAtual->tamTab[0])
-                tabAux = alteraNLinhas(tabAtual->prev->tamTab, tabAux);
-            if (tabAtual->prev->tamTab[1] != tabAtual->tamTab[1])
-                tabAux = alteraNColunas(tabAtual->prev->tamTab, tabAux);
-            /*printf("aqui\n");
-            printf("\nTAMANHO DO TABULEIRO %d %d\n", tabAtual->tamTab[0], tabAtual->tamTab[1]);
-            tabAux = alteraNLinhas(tabAtual->prev->tamTab, tabAux);
-            printf("TAMANHO DO TABULEIRO %d %d\n", tabAtual->tamTab[0], tabAtual->tamTab[1]);
-            printTabuleiro(tabAtual->tamTab, tabAux);
-             */
+            if (tabAtual->prev->tamTab[0] != tabAtual->tamTab[0]) {
+                tam[0] = tabAtual->prev->tamTab[0];
+                tam[1] = tabAtual->prev->tamTab[1];
+                tabAux = alteraNLinhas(tam, tabAux);
+            }
+            if (tabAtual->prev->tamTab[1] != tabAtual->tamTab[1]) {
+                tam[0] = tabAtual->prev->tamTab[0];
+                tam[1] = tabAtual->prev->tamTab[1];
+                tabAux = alteraNColunas(tam, tabAux);
+            }
         }
-        //printf("\ndps de alocar memoria no de estados\n");
-        //printTabuleiro(tabAtual->tamTab, tabAux);
         for (int i = 0; i < tabAtual->tamTab[0]; i++) {
             for (int j = 0; j < tabAtual->tamTab[1]; j++) {
-                if (tabAux[i][j]!='G' && tabAux[i][j]!='Y' && tabAux[i][j]!='R' && tabAux[i][j]!='P')
+                if (tabAux[i][j] != 'G' && tabAux[i][j] != 'Y' && tabAux[i][j] != 'R' && tabAux[i][j] != 'P')
                     tabAux[i][j] = '-';
             }
         }
@@ -158,7 +155,6 @@ void printPedirEstados(pJogada x, int nTurnos, int tamTab[2]) {
         printf("\nPretende visualizar o estado do tabuleiro? (S)/(N):\n>>");
         scanf(" %c", &escolha);
     } while (!(escolha == 'S' || escolha == 'N'));
-
     if (escolha == 'S') {
         if (nNosLista(x) > 0) {
             do {
@@ -171,5 +167,37 @@ void printPedirEstados(pJogada x, int nTurnos, int tamTab[2]) {
             return;
         }
     } else return;
+}
+
+int gravaRelJogadas(pJogada head, char pc, char *fichJog) {
+    FILE *f = NULL;
+    pJogada aux = head;
+    int i = 0;
+    f = fopen(fichJog, "wt");
+    if (f == NULL) {
+        printf("\nOcorreu um erro ao abrir o ficheiro de texto!\n");
+        return 0;
+    }
+    if (aux == NULL) return 0;
+    else {
+        fprintf(f, "--------------------\nLista de jogadas\n--------------------\n");
+        fprintf(f, "- Numero de jogadas: %d\n----------------------------------------\n", nNosLista(head));
+        if (pc == 'S')
+            fprintf(f, "- Jogou contra o computador!\n----------------------------------------\n");
+        while (aux != NULL) {
+            fprintf(f, "--%d--\n", i + 1);
+            fprintf(f, "Jogador %c\n", aux->x.nome);
+            fprintf(f, "Ultima jogada %c\n", aux->x.jogada);
+            fprintf(f, "N. pedras usadas %d\n", aux->x.nPedras);
+            fprintf(f, "N. de adicoes feitas %d\n", aux->x.nAdicoes);
+            fprintf(f, "Posicao da jogada no tabuleiro: %d %d\n", aux->linha, aux->coluna);
+            fprintf(f, "Tamanho do tabuleiro na jogada: [%d][%d]\n", aux->tamTab[0], aux->tamTab[1]);
+            fprintf(f, "----------------------------------------\n");
+            aux = aux->prox;
+            i++;
+        }
+    }
+    fclose(f);
+    return 1;
 }
 
