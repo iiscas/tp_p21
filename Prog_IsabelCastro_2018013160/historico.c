@@ -34,11 +34,9 @@ void printListaJogadas(pJogada lista) {
 
 void printEstados(pJogada p, int n, int tamTab[2]) {
     int tam = nNosLista(p);
-    pJogada temp = p; //lista ligada
-
+    pJogada temp = NULL; //lista ligada
     // ver se n de sucessoes é menor que o tamanho da lista
     if (tam < n) return;
-
     temp = p;
     // tirar o (tam-n+1)x nó desde o inicio
     for (int i = 1; i < tam - n + 1; i++) //JA FUNCIONA??? SUPOSTAMENTE
@@ -97,12 +95,19 @@ void printTabuleiroEstados(pJogada tabAtual, pJogada head, int n) {
             tabAux[head->linha][head->coluna] = 'R';
         } else if (head->x.jogada == 'D') {
             tabAux[head->linha][head->coluna] = 'P';
-        } else if (head->x.jogada == 'E') { //fazer aqui um realloc para ter espaço para inserir a linha //foi alterado a linha na proxima
+        } else if (head->x.jogada =='E') { //fazer aqui um realloc para ter espaço para inserir a linha //foi alterado a linha na proxima
             if (head->prev->tamTab[0] != head->tamTab[0])
                 tabAux = alteraNLinhas(head->prev->tamTab, tabAux);
             if (head->prev->tamTab[1] != head->tamTab[1])
                 tabAux = alteraNColunas(head->prev->tamTab, tabAux);
-        }head = head->prox;
+        }
+        for (int i = 0; i < head->tamTab[0]; i++) {
+            for (int j = 0; j < head->tamTab[1]; j++) {
+                if (tabAux[i][j]!='G' && tabAux[i][j]!='Y' && tabAux[i][j]!='R' && tabAux[i][j]!='P')
+                    tabAux[i][j] = '-';
+            }
+        }
+        head = head->prox;
     }
     printTabuleiro(head->tamTab, tabAux);
     //preencher com jogadas pedidas
@@ -133,7 +138,7 @@ void printTabuleiroEstados(pJogada tabAtual, pJogada head, int n) {
         //printTabuleiro(tabAtual->tamTab, tabAux);
         for (int i = 0; i < tabAtual->tamTab[0]; i++) {
             for (int j = 0; j < tabAtual->tamTab[1]; j++) {
-                if (tabAux[i][j] < 65)
+                if (tabAux[i][j]!='G' && tabAux[i][j]!='Y' && tabAux[i][j]!='R' && tabAux[i][j]!='P')
                     tabAux[i][j] = '-';
             }
         }
