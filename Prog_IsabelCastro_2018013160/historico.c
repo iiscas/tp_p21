@@ -169,35 +169,5 @@ void printPedirEstados(pJogada x, int nTurnos, int tamTab[2]) {
     } else return;
 }
 
-int gravaRelJogadas(pJogada head, char pc, char *fichJog) {
-    FILE *f = NULL;
-    pJogada aux = head;
-    int i = 0;
-    f = fopen(fichJog, "wt");
-    if (f == NULL) {
-        printf("\nOcorreu um erro ao abrir o ficheiro de texto!\n");
-        return 0;
-    }
-    if (aux == NULL) return 0;
-    else {
-        fprintf(f, "--------------------\nLista de jogadas\n--------------------\n");
-        fprintf(f, "- Numero de jogadas: %d\n----------------------------------------\n", nNosLista(head));
-        if (pc == 'S')
-            fprintf(f, "- Jogou contra o computador!\n----------------------------------------\n");
-        while (aux != NULL) {
-            fprintf(f, "--%d--\n", i + 1);
-            fprintf(f, "Jogador %c\n", aux->x.nome);
-            fprintf(f, "Ultima jogada %c\n", aux->x.jogada);
-            fprintf(f, "N. pedras usadas %d\n", aux->x.nPedras);
-            fprintf(f, "N. de adicoes feitas %d\n", aux->x.nAdicoes);
-            fprintf(f, "Posicao da jogada no tabuleiro: %d %d\n", aux->linha, aux->coluna);
-            fprintf(f, "Tamanho do tabuleiro na jogada: [%d][%d]\n", aux->tamTab[0], aux->tamTab[1]);
-            fprintf(f, "----------------------------------------\n");
-            aux = aux->prox;
-            i++;
-        }
-    }
-    fclose(f);
-    return 1;
-}
+
 

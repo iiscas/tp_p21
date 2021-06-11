@@ -142,6 +142,33 @@ Prog_IsabelCastro_2018013160/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/build
 .PHONY : Prog_IsabelCastro_2018013160/fast
 
+ficheiros.o: ficheiros.c.o
+
+.PHONY : ficheiros.o
+
+# target to build an object file
+ficheiros.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/ficheiros.c.o
+.PHONY : ficheiros.c.o
+
+ficheiros.i: ficheiros.c.i
+
+.PHONY : ficheiros.i
+
+# target to preprocess a source file
+ficheiros.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/ficheiros.c.i
+.PHONY : ficheiros.c.i
+
+ficheiros.s: ficheiros.c.s
+
+.PHONY : ficheiros.s
+
+# target to generate assembly for a file
+ficheiros.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Prog_IsabelCastro_2018013160.dir/build.make CMakeFiles/Prog_IsabelCastro_2018013160.dir/ficheiros.c.s
+.PHONY : ficheiros.c.s
+
 historico.o: historico.c.o
 
 .PHONY : historico.o
@@ -286,6 +313,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Prog_IsabelCastro_2018013160"
+	@echo "... ficheiros.o"
+	@echo "... ficheiros.i"
+	@echo "... ficheiros.s"
 	@echo "... historico.o"
 	@echo "... historico.i"
 	@echo "... historico.s"

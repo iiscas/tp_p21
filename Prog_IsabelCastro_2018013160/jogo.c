@@ -10,9 +10,10 @@
 pJogada iniciaJogo(char **tab, jogador x[], pJogada lista, int tamTabuleiro[2], char pc) {
     pJogada listaJogadas = lista;
     int nTurnos = 0, a = 0, escolha = 0;
-    //int tamTabuleiro[2] = {*lin, *col};
     int tipoVencedor = 0;
-
+    if(lista!=NULL){
+        nTurnos=1; //caso o jogo seja o recuperado!
+    }
     while (1) {
         printTabuleiro(tamTabuleiro, tab);
         ////////////////////////////// JOGADOR A ////////////////////////////////////////////////////
@@ -20,20 +21,16 @@ pJogada iniciaJogo(char **tab, jogador x[], pJogada lista, int tamTabuleiro[2], 
         printPedirEstados(listaJogadas, nTurnos, tamTabuleiro);
         printJogadas(nTurnos, x[0]);
         escolheJogada(&x[0], nTurnos, tab, tamTabuleiro);
-
         //jogada ja escolhida
         listaJogadas = opcaoEscolhida(tab, &x[0], listaJogadas, tamTabuleiro, &escolha);
         if (escolha == 1) {
             tab = alteraNLinhas(tamTabuleiro, tab);
             escolha = 0;
         } else if (escolha == 2) {
-            //printf("111  --TAMANHO DO TABULEIRO: %d %d \n",tamTabuleiro[0],tamTabuleiro[1]);
             tab = alteraNColunas(tamTabuleiro, tab);
-            //printf("TAMANHO DO TABULEIRO: %d %d \n",tamTabuleiro[0],tamTabuleiro[1]);//altera colunas
             escolha = 0;
         }
         printTabuleiro(tamTabuleiro, tab);
-
         //verifica se ha algum vencedor
         a = checkTabuleiro(tab, tamTabuleiro, &tipoVencedor);
         fflush(stdout);
@@ -88,6 +85,7 @@ pJogada iniciaJogo(char **tab, jogador x[], pJogada lista, int tamTabuleiro[2], 
         ///////////////////////////// FIM DO TURNO/JOGADA ///////////////////////////////////
         nTurnos++;
     }
+
     printListaJogadas(listaJogadas);
     printf("\n\nVoltando ao menu inicial.....\n\n");
     sleep(1);
@@ -465,12 +463,9 @@ pJogada opcaoEscolhidaPC(char **tab, pJogador x, pJogada listaJogadas, int *tamT
 int countPecas(char **tab, char jogada, int tam[2]) {
     for (int i = 0; i < tam[0]; i++) {
         for (int j = 0; j < tam[1]; j++) {
-            if (tab[i][j] == 'G' && jogada == 'B')
-                return 1;
-            else if (tab[i][j] == 'Y' && jogada == 'C')
-                return 1;
-            else if (tab[i][j] == '-' && jogada == 'A' || jogada == 'D')
-                return 1;
+            if (tab[i][j] == 'G' && jogada == 'B') return 1;
+            else if (tab[i][j] == 'Y' && jogada == 'C') return 1;
+            else if (tab[i][j] == '-' && jogada == 'A' || jogada == 'D') return 1;
         }
     }
     return 0;
