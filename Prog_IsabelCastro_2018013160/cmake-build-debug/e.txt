@@ -1,7 +1,7 @@
 --------------------
 Lista de jogadas
 --------------------
-- Numero de jogadas: 2
+- Numero de jogadas: 4
 ----------------------------------------
 - Jogou contra o computador!
 ----------------------------------------
@@ -18,6 +18,22 @@ Jogador B
 Ultima jogada A
 N. pedras usadas 0
 N. de adicoes feitas 0
-Posicao da jogada no tabuleiro: 2 1
+Posicao da jogada no tabuleiro: 0 2
+Tamanho do tabuleiro na jogada: [3][3]
+----------------------------------------
+--3--
+Jogador A
+Ultima jogada A
+N. pedras usadas 0
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 0 1
+Tamanho do tabuleiro na jogada: [3][3]
+----------------------------------------
+--4--
+Jogador A
+Ultima jogada A
+N. pedras usadas 0
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 2 2
 Tamanho do tabuleiro na jogada: [3][3]
 ----------------------------------------

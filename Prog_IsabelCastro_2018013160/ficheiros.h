@@ -1,9 +1,7 @@
 #ifndef MAIN_C_FICHEIROS_H
 #define MAIN_C_FICHEIROS_H
-
-
 #include "jogo.h"
-#include "historico.h"
+
 #define JOGREC "jogo.dat"
 
 int gravaRelJogadas(pJogada lista, char pc, char *fichJog);

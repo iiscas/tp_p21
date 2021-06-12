@@ -1,4 +1,5 @@
 #include "ficheiros.h"
+#include "historico.h"
 
 int gravaRelJogadas(pJogada head, char pc, char *fichJog) {
     FILE *f = NULL;
@@ -63,35 +64,32 @@ void preencheFichBinario(pJogada lista, int pc, int numJogadas) {
 
 pJogada preencheListaRec(pJogada lista, int *pc, int *numJogadas) {
     FILE *f = NULL;
-    pJogada listaN = NULL;
+    pJogada aux = NULL;
     noJogada x;
-    //num jogadas
-    //pc
-    //estrutura
-
     // Abrir o ficheiro binário
     f = fopen(JOGREC, "rb");
     if (f == NULL) {
         printf("Erro ao abrir o ficheiro\n");
         return lista;
     }
-
     fread(numJogadas, sizeof(int), 1, f);
     printf("Num de jogadas %d\n", *numJogadas);
     fread(pc, sizeof(int), 1, f);
-    printf("PC: %c\n", *pc);
-
+    //printf("PC: %c\n", *pc);
     // Ler os dados do ficheiro
-        for (int i = 0; i < *numJogadas; i++) {
-            fread(&x, sizeof(noJogada), 1, f);
-                listaN= adicionaFimLista(listaN,x.x,x.linha,x.coluna,x.tamTab);
-            printJogador(listaN->x);
-            listaN=listaN->prox;
-        }
+    for (int i = 0; i < *numJogadas; i++) {
+        fread(&x, sizeof(noJogada), 1, f);
+        //printJogador(x.x);
+        aux = adicionaFimLista(aux, x.x, x.linha, x.coluna, x.tamTab);
+        //printJogador(aux->x);
+        //printListaJogadas(aux);
+        //aux=aux->prox;
 
-    lista=listaN;
+    }
+
+    lista = aux;
     fclose(f);
-    free(listaN);
+    free(aux);
 
     return lista;
 }

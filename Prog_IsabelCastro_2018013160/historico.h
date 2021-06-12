@@ -2,7 +2,6 @@
 #define MAIN_C_HISTORICO_H
 
 #include "jogo.h"
-#include "tabuleiro.h"
 
 void printListaJogadas(pJogada lista);
 

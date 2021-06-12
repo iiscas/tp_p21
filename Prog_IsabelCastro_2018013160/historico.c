@@ -1,4 +1,6 @@
 #include "historico.h"
+#include "tabuleiro.h"
+
 
 void printJogadas(int count, jogador x) {
     if (count == 0) {
@@ -11,6 +13,7 @@ void printJogadas(int count, jogador x) {
                "(C)- Trocar uma peça Amarela que esteja colocada no tabuleiro por uma peça Vermelha\n");
         printf("(D)- Colocar uma pedra numa célula vazia.(Usado %d vezes)\n", x.nPedras);
         printf("(E)- Adicionar uma linha ou uma coluna ao final do tabuleiro.(Usado %d vezes)\n", x.nAdicoes);
+        printf("(F)- Interromper o jogo e guardar para mais tarde!\n");
     }
 }
 

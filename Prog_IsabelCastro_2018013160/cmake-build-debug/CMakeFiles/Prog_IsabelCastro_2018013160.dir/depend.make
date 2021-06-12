@@ -5,7 +5,6 @@ CMakeFiles/Prog_IsabelCastro_2018013160.dir/ficheiros.c.o: ../ficheiros.c
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/ficheiros.c.o: ../ficheiros.h
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/ficheiros.c.o: ../historico.h
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/ficheiros.c.o: ../jogo.h
-CMakeFiles/Prog_IsabelCastro_2018013160.dir/ficheiros.c.o: ../tabuleiro.h
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/ficheiros.c.o: ../utils.h
 
 CMakeFiles/Prog_IsabelCastro_2018013160.dir/historico.c.o: ../historico.c

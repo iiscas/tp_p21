@@ -1,9 +1,12 @@
 #ifndef PROG_ISABELCASTRO_2018013160_JOGO_H
 #define PROG_ISABELCASTRO_2018013160_JOGO_H
 
-#include "tabuleiro.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <ctype.h>
 #include <sys/unistd.h>
+#include "utils.h"
 
 typedef struct jogador jogador, *pJogador;
 struct jogador {
@@ -20,6 +23,9 @@ struct jogadas {
     pJogada prox;
     pJogada prev;
 };
+
+
+
 
 pJogada iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int tamTab[2], char pc);
 

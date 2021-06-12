@@ -11,7 +11,6 @@
 #define MENU "menu.txt"
 #define REGRAS "regras.txt"
 
-
 void menuPrincipal() {
 
     FILE *f;
@@ -31,6 +30,7 @@ int main() {
     char pc, fichJog[25], recJogo;
     char **tabuleiro = NULL;
     pJogada listaJogadas = NULL;
+    pJogada aux = NULL;
     jogador jogadores[2] = {
             {'A', '-', 0, 0},
             {'B', '-', 0, 0}};
@@ -40,17 +40,42 @@ int main() {
         scanf("%d", &escolha);
         switch (escolha) {
             case 1:
-                if (access(JOGREC, F_OK) == 0)
+                if (access(JOGREC, F_OK) == 0) {
                     printf("Existe um jogo para recuperar!\n");
-                do {
-                    printf("------------------------------------\nPretende recuperar o jogo?\nSim(S) / Nao(N)\n------------------------------------\n>> ");
-                    scanf(" %c", &recJogo);
-                } while (recJogo != 'N' && recJogo != 'S');
-
+                    do {
+                        printf("------------------------------------\nPretende recuperar o jogo?\nSim(S) / Nao(N)\n------------------------------------\n>> ");
+                        scanf(" %c", &recJogo);
+                    } while (recJogo != 'N' && recJogo != 'S');
+                }
                 if (recJogo == 'S') {
-                    return 1;
+                    int total = 0;
+                    listaJogadas = preencheListaRec(listaJogadas, (int *) &pc, &total);
+                    printListaJogadas(listaJogadas);
 
-                } else if (recJogo == 'N') {
+                    if (pc == 'S')
+                        puts("Vai jogar contra o pc!\n");
+                    else
+                        puts("\nPrecisa de outro jogador!");
+                    printf("\n----------------------\nJogo vai recomeçar!\n----------------------\n");
+                    printf("\n-------------------------\nA recriar o tabuleiro...\n-------------------------\n");
+                    sleep(1);
+
+                    tabuleiro = recuperaTabuleiro(listaJogadas);
+                    listaJogadas = iniciaJogo(tabuleiro, jogadores, listaJogadas, listaJogadas->tamTab, pc);
+                    do {
+                        printf("-----------------------------------------------------------\nIndique o nome do ficheiro(xxx.txt) para gravar as jogadas\n-----------------------------------------------------------\n>> ");
+                        fscanf(stdin, "%s", fichJog);
+                    } while (!strstr(fichJog, ".txt"));
+
+                    if (gravaRelJogadas(listaJogadas, pc, fichJog))
+                        puts("\n--------------------\nRelatorio guardado!\n--------------------");
+                    escolha = 3;
+                    if (listaJogadas != NULL) {
+                        preencheFichBinario(listaJogadas, (int) pc, nNosLista(listaJogadas));
+                    }
+                    break;
+
+                } else {
                     do {
 
                         printf("------------------------------------\nPretende jogar contra o computador?\nSim(S) / Nao(N)\n------------------------------------\n>> ");
@@ -62,18 +87,6 @@ int main() {
                     tabuleiro = inicializaTabuleiro(&tamTabuleiro[0], &tamTabuleiro[1]);
                     listaJogadas = iniciaJogo(tabuleiro, jogadores, listaJogadas, tamTabuleiro, pc);
                     //printJogador(jogadores[0]); //A ESTRUTURA ESTA A SER BEM ALTERADA!
-                    int total = 0;
-                    total= nNosLista(listaJogadas);
-                    preencheFichBinario(listaJogadas, (int) pc, total);
-                    pJogada aux = NULL;
-                    aux=preencheListaRec(aux, (int *) &pc, &total);
-                    printListaJogadas(listaJogadas);
-
-                    pJogada a = NULL;
-
-                    //leDadosV2(a, &total);
-
-
                     do {
                         printf("-----------------------------------------------------------\nIndique o nome do ficheiro(xxx.txt) para gravar as jogadas\n-----------------------------------------------------------\n>> ");
                         fscanf(stdin, "%s", fichJog);
@@ -81,8 +94,12 @@ int main() {
                     if (gravaRelJogadas(listaJogadas, pc, fichJog))
                         puts("\nRelatorio guardado!\n");
                     escolha = 3;
+                    if (listaJogadas != NULL) {
+                        preencheFichBinario(listaJogadas, (int) pc, nNosLista(listaJogadas));
+                    }
                     break;
                 }
+
             case 2:;
                 printf("\n");
                 FILE *f;

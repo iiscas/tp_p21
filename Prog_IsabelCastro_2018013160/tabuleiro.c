@@ -130,3 +130,46 @@ char **preencheTabuleiro(int tam[2], char **tab, int lEscolhida, int cEscolhida,
     }
     return tab;
 }
+
+char **recuperaTabuleiro(pJogada listaJ) {
+
+    char **tabAux = NULL;
+    pJogada head = listaJ;
+    int a, tam[2];
+    //a = nNosLista(head) - n;
+    tabAux = inicializaTabuleiroEstados(&head->tamTab[0], &head->tamTab[1]);
+    //preencher com jogadas antes do pedido
+    while (head != NULL) {
+        if (head->x.jogada == 'A') {
+            tabAux[head->linha][head->coluna] = 'G';
+        } else if (head->x.jogada == 'B') {
+            tabAux[head->linha][head->coluna] = 'Y';
+        } else if (head->x.jogada == 'C') {
+            tabAux[head->linha][head->coluna] = 'R';
+        } else if (head->x.jogada == 'D') {
+            tabAux[head->linha][head->coluna] = 'P';
+        } else if (head->x.jogada ==
+                   'E') { //fazer aqui um realloc para ter espaço para inserir a linha //foi alterado a linha na proxima
+            if (head->prev->tamTab[0] != head->tamTab[0]) {
+                tam[0] = head->prev->tamTab[0];
+                tam[1] = head->prev->tamTab[1];
+                tabAux = alteraNLinhas(tam, tabAux);
+            }
+            if (head->prev->tamTab[1] != head->tamTab[1]) {
+                tam[0] = head->prev->tamTab[0];
+                tam[1] = head->prev->tamTab[1];
+                tabAux = alteraNColunas(tam, tabAux);
+            }
+        }
+        for (int i = 0; i < head->tamTab[0]; i++) {
+            for (int j = 0; j < head->tamTab[1]; j++) {
+                if (tabAux[i][j] != 'G' && tabAux[i][j] != 'Y' && tabAux[i][j] != 'R' && tabAux[i][j] != 'P')
+                    tabAux[i][j] = '-';
+            }
+        }
+        head = head->prox;
+    }
+
+    free(head);
+    return tabAux;
+}
