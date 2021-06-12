@@ -1,9 +1,7 @@
 --------------------
 Lista de jogadas
 --------------------
-- Numero de jogadas: 5
-----------------------------------------
-- Jogou contra o computador!
+- Numero de jogadas: 10
 ----------------------------------------
 --1--
 Jogador A
@@ -18,30 +16,70 @@ Jogador B
 Ultima jogada A
 N. pedras usadas 0
 N. de adicoes feitas 0
-Posicao da jogada no tabuleiro: 2 1
+Posicao da jogada no tabuleiro: 2 0
 Tamanho do tabuleiro na jogada: [3][3]
 ----------------------------------------
 --3--
 Jogador A
+Ultima jogada D
+N. pedras usadas 1
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 1 0
+Tamanho do tabuleiro na jogada: [3][3]
+----------------------------------------
+--4--
+Jogador B
 Ultima jogada A
 N. pedras usadas 0
 N. de adicoes feitas 0
 Posicao da jogada no tabuleiro: 0 1
 Tamanho do tabuleiro na jogada: [3][3]
 ----------------------------------------
---4--
-Jogador B
-Ultima jogada B
-N. pedras usadas 0
-N. de adicoes feitas 0
-Posicao da jogada no tabuleiro: 0 0
-Tamanho do tabuleiro na jogada: [3][3]
-----------------------------------------
 --5--
+Jogador A
+Ultima jogada E
+N. pedras usadas 1
+N. de adicoes feitas 1
+Posicao da jogada no tabuleiro: -1 -1
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--6--
 Jogador A
 Ultima jogada A
 N. pedras usadas 0
 N. de adicoes feitas 0
-Posicao da jogada no tabuleiro: 1 1
-Tamanho do tabuleiro na jogada: [3][3]
+Posicao da jogada no tabuleiro: 3 0
+Tamanho do tabuleiro na jogada: [4][3]
+----------------------------------------
+--7--
+Jogador B
+Ultima jogada E
+N. pedras usadas 0
+N. de adicoes feitas 1
+Posicao da jogada no tabuleiro: -1 -1
+Tamanho do tabuleiro na jogada: [4][4]
+----------------------------------------
+--8--
+Jogador A
+Ultima jogada A
+N. pedras usadas 0
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 0 2
+Tamanho do tabuleiro na jogada: [4][4]
+----------------------------------------
+--9--
+Jogador A
+Ultima jogada E
+N. pedras usadas 0
+N. de adicoes feitas 1
+Posicao da jogada no tabuleiro: -1 -1
+Tamanho do tabuleiro na jogada: [5][4]
+----------------------------------------
+--10--
+Jogador A
+Ultima jogada A
+N. pedras usadas 0
+N. de adicoes feitas 0
+Posicao da jogada no tabuleiro: 0 3
+Tamanho do tabuleiro na jogada: [5][4]
 ----------------------------------------

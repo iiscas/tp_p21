@@ -60,7 +60,7 @@ char **inicializaTabuleiro(int *lin, int *col) {
 }
 
 char **inicializaTabuleiroEstados(int *lin, int *col) {
-    *col = *lin;
+    //*col = *lin;
     char **tab;
 // aloca um vetor de lin ponteiros para linhas
     tab = (char **) malloc(*lin * sizeof(char *));
@@ -131,11 +131,11 @@ char **preencheTabuleiro(int tam[2], char **tab, int lEscolhida, int cEscolhida,
     return tab;
 }
 
-char **recuperaTabuleiro(pJogada listaJ) {
+char **recuperaTabuleiro(pJogada listaJ,int tam[2]) {
 
     char **tabAux = NULL;
     pJogada head = listaJ;
-    int tam[2];
+    //int tam[2];
     //a = nNosLista(head) - n;
     tabAux = inicializaTabuleiroEstados(&head->tamTab[0], &head->tamTab[1]);
     //preencher com jogadas antes do pedido
@@ -169,7 +169,6 @@ char **recuperaTabuleiro(pJogada listaJ) {
         }
         head = head->prox;
     }
-
     free(head);
     return tabAux;
 }

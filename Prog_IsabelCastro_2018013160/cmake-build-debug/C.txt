@@ -1,7 +1,7 @@
 --------------------
 Lista de jogadas
 --------------------
-- Numero de jogadas: 10
+- Numero de jogadas: 8
 ----------------------------------------
 --1--
 Jogador A
@@ -66,20 +66,4 @@ N. pedras usadas 0
 N. de adicoes feitas 0
 Posicao da jogada no tabuleiro: 0 2
 Tamanho do tabuleiro na jogada: [4][4]
-----------------------------------------
---9--
-Jogador A
-Ultima jogada E
-N. pedras usadas 0
-N. de adicoes feitas 1
-Posicao da jogada no tabuleiro: -1 -1
-Tamanho do tabuleiro na jogada: [5][4]
-----------------------------------------
---10--
-Jogador A
-Ultima jogada A
-N. pedras usadas 0
-N. de adicoes feitas 0
-Posicao da jogada no tabuleiro: 0 3
-Tamanho do tabuleiro na jogada: [5][4]
 ----------------------------------------

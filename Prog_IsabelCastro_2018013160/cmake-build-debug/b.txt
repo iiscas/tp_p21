@@ -1,7 +1,7 @@
 --------------------
 Lista de jogadas
 --------------------
-- Numero de jogadas: 7
+- Numero de jogadas: 6
 ----------------------------------------
 - Jogou contra o computador!
 ----------------------------------------
@@ -10,23 +10,23 @@ Jogador A
 Ultima jogada A
 N. pedras usadas 0
 N. de adicoes feitas 0
-Posicao da jogada no tabuleiro: 0 0
-Tamanho do tabuleiro na jogada: [3][3]
+Posicao da jogada no tabuleiro: 1 1
+Tamanho do tabuleiro na jogada: [4][3]
 ----------------------------------------
 --2--
 Jogador B
 Ultima jogada A
 N. pedras usadas 0
 N. de adicoes feitas 0
-Posicao da jogada no tabuleiro: 2 2
+Posicao da jogada no tabuleiro: 0 2
 Tamanho do tabuleiro na jogada: [3][3]
 ----------------------------------------
 --3--
 Jogador A
-Ultima jogada A
+Ultima jogada B
 N. pedras usadas 0
 N. de adicoes feitas 0
-Posicao da jogada no tabuleiro: 1 0
+Posicao da jogada no tabuleiro: 0 2
 Tamanho do tabuleiro na jogada: [3][3]
 ----------------------------------------
 --4--
@@ -34,30 +34,22 @@ Jogador B
 Ultima jogada D
 N. pedras usadas 1
 N. de adicoes feitas 0
-Posicao da jogada no tabuleiro: 1 1
+Posicao da jogada no tabuleiro: 2 1
 Tamanho do tabuleiro na jogada: [3][3]
 ----------------------------------------
 --5--
 Jogador A
-Ultima jogada A
+Ultima jogada E
 N. pedras usadas 0
-N. de adicoes feitas 0
-Posicao da jogada no tabuleiro: 1 2
-Tamanho do tabuleiro na jogada: [3][3]
+N. de adicoes feitas 1
+Posicao da jogada no tabuleiro: -1 -1
+Tamanho do tabuleiro na jogada: [4][3]
 ----------------------------------------
 --6--
 Jogador B
 Ultima jogada B
 N. pedras usadas 1
 N. de adicoes feitas 0
-Posicao da jogada no tabuleiro: 1 2
-Tamanho do tabuleiro na jogada: [3][3]
-----------------------------------------
---7--
-Jogador A
-Ultima jogada A
-N. pedras usadas 0
-N. de adicoes feitas 0
-Posicao da jogada no tabuleiro: 2 0
-Tamanho do tabuleiro na jogada: [3][3]
+Posicao da jogada no tabuleiro: 1 1
+Tamanho do tabuleiro na jogada: [4][3]
 ----------------------------------------

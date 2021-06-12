@@ -27,13 +27,15 @@ int main() {
     int tamTabuleiro[2], escolha = 0, stop = 0;
     char pc, fichJog[25], recJogo;
     char **tabuleiro = NULL;
-    pJogada listaJogadas = NULL;
+    pJogada listaJogadas;
+
     pJogada aux = NULL;
     jogador jogadores[2] = {
             {'A', '-', 0, 0},
             {'B', '-', 0, 0}};
 
     do {
+        listaJogadas = NULL;
         menuPrincipal();
         scanf("%d", &escolha);
         switch (escolha) {
@@ -60,8 +62,8 @@ int main() {
                     printf("\n-------------------------\nA recriar o tabuleiro...\n-------------------------\n");
                     sleep(1);
                     //JOGO E TABULEIRO A SEREM PREPARADOS
-                    tabuleiro = recuperaTabuleiro(listaJogadas);
-                    listaJogadas = iniciaJogo(tabuleiro, jogadores, listaJogadas, listaJogadas->tamTab, pc, &stop);
+                    tabuleiro = recuperaTabuleiro(listaJogadas, tamTabuleiro);
+                    listaJogadas = iniciaJogo(tabuleiro, jogadores, listaJogadas, tamTabuleiro, pc, &stop);
 
                     //SAIU DO JOGO
                     //SE FOI INTERROMPIDO ENTAO GRAVAR JOGO
