@@ -1,13 +1,8 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "UnusedValue"
-#pragma ide diagnostic ignored "cert-msc50-cpp"
-#pragma ide diagnostic ignored "readability-non-const-parameter"
-#pragma ide diagnostic ignored "cert-err34-c"
-
 #include "jogo.h"
 #include "tabuleiro.h"
 #include "historico.h"
-pJogada iniciaJogo(char **tab, jogador x[], pJogada lista, int tamTabuleiro[2], char pc) {
+
+pJogada iniciaJogo(char **tab, jogador x[], pJogada lista, int tamTabuleiro[2], char pc, int *stop) {
     pJogada listaJogadas = lista;
     int nTurnos = 0, a = 0, escolha = 0;
     int tipoVencedor = 0;
@@ -18,12 +13,14 @@ pJogada iniciaJogo(char **tab, jogador x[], pJogada lista, int tamTabuleiro[2], 
         printTabuleiro(tamTabuleiro, tab);
         ////////////////////////////// JOGADOR A ////////////////////////////////////////////////////
         printf("Jogador %c e a sua vez! ", x[0].nome);
-        printPedirEstados(listaJogadas, nTurnos, tamTabuleiro);
+        printPedirEstados(listaJogadas, nTurnos);
         printJogadas(nTurnos, x[0]);
         escolheJogada(&x[0], nTurnos, tab, tamTabuleiro);
         //jogada ja escolhida
-        if(x[0].jogada=='F')
+        if (x[0].jogada == 'F') {
+            *stop = 1;
             break;
+        }
         listaJogadas = opcaoEscolhida(tab, &x[0], listaJogadas, tamTabuleiro, &escolha);
         if (escolha == 1) {
             tab = alteraNLinhas(tamTabuleiro, tab);
@@ -38,16 +35,16 @@ pJogada iniciaJogo(char **tab, jogador x[], pJogada lista, int tamTabuleiro[2], 
         fflush(stdout);
         if (a > -1) //se tabuleiro encontrou algo completo
             if (procuraVencedor(listaJogadas, a, tipoVencedor) == 1) break;
-        //fflush(stdout);
-        printListaJogadas(listaJogadas);
         ////////////////////////////// JOGADOR B ////////////////////////////////////////////////////
         if (pc == 'N') {
             printf("Jogador %c e a sua vez! ", x[1].nome);
-            printPedirEstados(listaJogadas, nTurnos, tamTabuleiro);
+            printPedirEstados(listaJogadas, nTurnos);
             printJogadas(nTurnos, x[1]);
             escolheJogada(&x[1], nTurnos, tab, tamTabuleiro);
-            if(x[0].jogada=='F')
+            if (x[0].jogada == 'F') {
+                *stop = 1;
                 break;
+            }
             //jogada já escolhida
             listaJogadas = opcaoEscolhida(tab, &x[1], listaJogadas, tamTabuleiro, &escolha);
             if (escolha == 1) {
@@ -83,14 +80,13 @@ pJogada iniciaJogo(char **tab, jogador x[], pJogada lista, int tamTabuleiro[2], 
                 if (procuraVencedor(listaJogadas, a, tipoVencedor) == 1) break;
             fflush(stdout);
         }
-       // printListaJogadas(listaJogadas);
 
         ///////////////////////////// FIM DO TURNO/JOGADA ///////////////////////////////////
         nTurnos++;
     }
-    if(listaJogadas!=NULL)
+    if (listaJogadas != NULL)
         printListaJogadas(listaJogadas);
-    printf("\n\nVoltando ao menu inicial.....\n\n");
+    printf("\n-------------------------------\nVoltando ao menu inicial.....\n-------------------------------\n");
     sleep(1);
     return listaJogadas;
 }
@@ -187,8 +183,6 @@ pJogada jogadaE(char **tab, int *escolha, pJogador x, pJogada listaJogadas, int 
     return listaJogadas;
 }
 
-
-////////////////////// LISTA LIGADA ///////////////////////////////
 pJogada adicionaFimLista(pJogada lista, jogador x, int l, int c, int tamTab[2]) {
     noJogada j;
     pJogada novaJogada, aux;
@@ -375,7 +369,7 @@ void escolheJogada(pJogador x, int nTurnos, char **tab, int tam[2]) {
             printf("\n>>");
             scanf(" %c", &x->jogada);
 
-            if(x->jogada=='F')
+            if (x->jogada == 'F')
                 return;
             if (x->jogada != 'D' && x->jogada != 'E') {
                 if (countPecas(tab, x->jogada, tam) == 0) {
@@ -475,5 +469,3 @@ int countPecas(char **tab, char jogada, int tam[2]) {
     }
     return 0;
 }
-
-#pragma clang diagnostic pop

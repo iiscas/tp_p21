@@ -33,7 +33,7 @@ void printListaJogadas(pJogada lista) {
     }
 }
 
-void printEstados(pJogada p, int n, int tamTab[2]) {
+void printEstados(pJogada p, int n) {
     if (p == NULL) return;
     int tam = nNosLista(p);
     pJogada temp = NULL; //lista ligada
@@ -150,7 +150,7 @@ void printTabuleiroEstados(pJogada tabAtual, pJogada listaJ, int n) {
 }
 
 
-void printPedirEstados(pJogada x, int nTurnos, int tamTab[2]) {
+void printPedirEstados(pJogada x, int nTurnos) {
     int k = 0;
     char escolha;
     int count = 0;
@@ -164,7 +164,7 @@ void printPedirEstados(pJogada x, int nTurnos, int tamTab[2]) {
                 printf("\nQuantas jogadas quer visualizar?\n>> ");
                 scanf("%d", &k);
             } while (k > nNosLista(x));
-            printEstados(x, k, tamTab);
+            printEstados(x, k);
         } else {
             printf("\n-----------------------\nNao ha jogadas ainda!\nJogo vai continuar...\n-----------------------\n");
             return;

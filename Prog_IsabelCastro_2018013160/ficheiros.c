@@ -36,13 +36,10 @@ int gravaRelJogadas(pJogada head, char pc, char *fichJog) {
 void preencheFichBinario(pJogada lista, int pc, int numJogadas) {
     FILE *f;
     pJogada aux = lista;
-    //pJogada x = NULL;
-
     if (aux == NULL) {
         puts("ERRO AO ALOCAR MEMORIA!");
         return;
     }
-
     f = fopen(JOGREC, "wb");
     if (f == NULL) {
         printf("\nERRO AO ABRIR FICHEIRO!");
@@ -57,7 +54,6 @@ void preencheFichBinario(pJogada lista, int pc, int numJogadas) {
         //printf("LISTA A SER GUARDADA--JOG NOME: %c\n",x->x.nome);
         aux = aux->prox;
     }
-
     free(aux);
     fclose(f);
 }
@@ -73,7 +69,6 @@ pJogada preencheListaRec(pJogada lista, int *pc, int *numJogadas) {
         return lista;
     }
     fread(numJogadas, sizeof(int), 1, f);
-    printf("Num de jogadas %d\n", *numJogadas);
     fread(pc, sizeof(int), 1, f);
     //printf("PC: %c\n", *pc);
     // Ler os dados do ficheiro
@@ -86,7 +81,6 @@ pJogada preencheListaRec(pJogada lista, int *pc, int *numJogadas) {
         //aux=aux->prox;
 
     }
-
     lista = aux;
     fclose(f);
     free(aux);

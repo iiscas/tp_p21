@@ -135,7 +135,7 @@ char **recuperaTabuleiro(pJogada listaJ) {
 
     char **tabAux = NULL;
     pJogada head = listaJ;
-    int a, tam[2];
+    int tam[2];
     //a = nNosLista(head) - n;
     tabAux = inicializaTabuleiroEstados(&head->tamTab[0], &head->tamTab[1]);
     //preencher com jogadas antes do pedido

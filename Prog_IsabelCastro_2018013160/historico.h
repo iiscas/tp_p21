@@ -7,7 +7,7 @@ void printListaJogadas(pJogada lista);
 
 void printJogadas(int count, jogador x);
 
-void printEstados(pJogada p, int k, int tamTab[2]);
+void printEstados(pJogada p, int k);
 
 void printListaJogadasReverso(pJogada head);
 
@@ -15,7 +15,7 @@ int nNosLista(pJogada head);
 
 void printTabuleiroEstados(pJogada tabAtual, pJogada head, int n);
 
-void printPedirEstados(pJogada x, int nTurnos, int tamTab[2]);
+void printPedirEstados(pJogada x, int nTurnos);
 
 
 
