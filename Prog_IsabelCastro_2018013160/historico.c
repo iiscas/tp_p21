@@ -127,7 +127,7 @@ void printTabuleiroEstados(pJogada tabAtual, pJogada listaJ, int n) {
         a++;
         tabAtual = tabAtual->prox;
     }
-    freeListaJogadas(tabAtual);
+
     freeTabuleiro(tabAux,tam[0]);
 }
 

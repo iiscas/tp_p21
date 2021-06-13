@@ -289,7 +289,6 @@ int procuraVencedor(pJogada listaJogadas, int x, int tipo) {
         }
         atual = atual->prev;
     }
-    free(atual);
     return 0;
 }
 
@@ -447,5 +446,28 @@ void initJogadores(jogador *j) {
         j[i].jogada='-';
         j[i].nAdicoes=0;
         j[i].nPedras=0;
+    }
+}
+
+void atualizaJogadores(jogador *j, pJogada lista) {
+    pJogada aux=lista;
+    if(aux==NULL)
+        return;
+    while(aux!=NULL){
+        if(aux->prox==NULL){ //encontrou ultimo
+            if(aux->x.nome=='A'){ //se ultimo jogador foi o A
+                j[0].nome='A'; j[0].jogada=aux->x.jogada;
+                j[0].nAdicoes=aux->x.nAdicoes; j[0].nPedras=aux->x.nPedras;
+                j[1].nome='B'; j[1].jogada=aux->prev->x.jogada;
+                j[1].nAdicoes=aux->prev->x.nAdicoes; j[1].nPedras=aux->prev->x.nPedras;
+            }
+            else if(aux->x.nome=='B'){
+                j[0].nome='A'; j[0].jogada=aux->prev->x.jogada;
+                j[0].nAdicoes=aux->prev->x.nAdicoes; j[0].nPedras=aux->prev->x.nPedras;
+                j[1].nome='B'; j[1].jogada=aux->prev->x.jogada;
+                j[1].nAdicoes=aux->prev->x.nAdicoes; j[1].nPedras=aux->prev->x.nPedras;
+            }
+        }
+        aux=aux->prox;
     }
 }

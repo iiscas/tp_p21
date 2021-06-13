@@ -6,20 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/ficheiros.c
-ficheiros.h
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/ficheiros.h
-historico.h
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/historico.h
-
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/ficheiros.h
-jogo.h
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/jogo.h
-
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/historico.h
-jogo.h
-/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/jogo.h
-
 /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/jogo.h
 stdio.h
 -
@@ -33,6 +19,14 @@ sys/unistd.h
 -
 utils.h
 /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/utils.h
+
+/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/tabuleiro.c
+tabuleiro.h
+/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/tabuleiro.h
+
+/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/tabuleiro.h
+jogo.h
+/cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/jogo.h
 
 /cygdrive/c/Users/isabe/Documents/GitHub/tp_p21/Prog_IsabelCastro_2018013160/utils.h
 

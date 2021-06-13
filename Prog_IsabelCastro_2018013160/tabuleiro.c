@@ -163,7 +163,7 @@ char **recuperaTabuleiro(pJogada listaJ, int tam[2]) {
         }
         head = head->prox;
     }
-    free(head);
+
     return tabAux;
 }
 

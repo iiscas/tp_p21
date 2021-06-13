@@ -61,4 +61,6 @@ void freeListaJogadas(pJogada lista);
 
 void initJogadores(jogador *j);
 
+void atualizaJogadores(jogador *j,pJogada lista);
+
 #endif //PROG_ISABELCASTRO_2018013160_JOGO_H

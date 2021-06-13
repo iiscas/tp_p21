@@ -50,6 +50,7 @@ int main() {
                 if (recJogo == 'S') {
                     int total = 0;
                     listaJogadas = preencheListaRec(listaJogadas, (int *) &pc, &total);
+                    atualizaJogadores(jogadores,listaJogadas);
 
                     if (pc == 'S') puts("Vai jogar contra o pc!\n");
                     else puts("\nPrecisa de outro jogador!");
