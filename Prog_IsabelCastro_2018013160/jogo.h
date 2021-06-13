@@ -1,3 +1,5 @@
+//ISABEL RAMOS CASTRO
+//2018013160
 #ifndef PROG_ISABELCASTRO_2018013160_JOGO_H
 #define PROG_ISABELCASTRO_2018013160_JOGO_H
 
@@ -25,19 +27,9 @@ struct jogadas {
 };
 
 
-
-
-pJogada iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int tamTab[2], char pc,int *stop);
+pJogada iniciaJogo(char **tab, jogador x[], pJogada listaJogadas, int tamTab[2], char pc, int *stop);
 
 pJogada adicionaFimLista(pJogada lista, jogador x, int l, int c, int tamTab[2]);
-
-void printJogador(jogador x);
-
-int checkTabuleiro(char **tab, int tamTab[2], int *tipo);
-
-int verificaJogada(char **tab, int lJogador, int cJogador);
-
-int procuraVencedor(pJogada listaJogadas, int x, int tipo);
 
 pJogada opcaoEscolhida(char **tab, pJogador x, pJogada listaJogadas, int tamTab[2], int *escolha);
 
@@ -51,11 +43,22 @@ pJogada jogadaD(char **tab, int tamTab[2], pJogador x, pJogada listaJogadas);
 
 pJogada jogadaE(char **tab, int *escolha, pJogador x, pJogada listaJogadas, int tamTab[2]);
 
-void escolheJogada(pJogador x, int nTurnos,char **tab,int tam[2]);
-
-void escolheJogadaPC(pJogador x, int nTurnos,char **tab,int tam[2]);
-
 pJogada opcaoEscolhidaPC(char **tab, pJogador x, pJogada listaJogadas, int tamTab[2], int *escolha);
 
-int countPecas(char **tab, char jogada,int tam[2]);
+void printJogador(jogador x);
+
+int verificaJogada(char **tab, int lJogador, int cJogador);
+
+int procuraVencedor(pJogada listaJogadas, int x, int tipo);
+
+void escolheJogada(pJogador x, int nTurnos, char **tab, int tam[2]);
+
+void escolheJogadaPC(pJogador x, int nTurnos, char **tab, int tam[2]);
+
+int countPecas(char **tab, char jogada, int tam[2]);
+
+void freeListaJogadas(pJogada lista);
+
+void initJogadores(jogador *j);
+
 #endif //PROG_ISABELCASTRO_2018013160_JOGO_H

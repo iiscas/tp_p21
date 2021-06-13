@@ -1,11 +1,11 @@
+//ISABEL RAMOS CASTRO
+//2018013160
 #include "historico.h"
 #include "tabuleiro.h"
-
 
 void printJogadas(int count, jogador x) {
     if (count == 0) {
         printf("\n---------------------------------\nSó pode jogar uma peça verde! (A)\n---------------------------------\n");
-
     } else if (count >= 1) {
         printf("\n-----------------------------------\nJa pode fazer as seguintes jogadas\n-----------------------------------\n"
                "(A)- Colocar uma peça Verde numa célula vazia\n"
@@ -36,31 +36,14 @@ void printListaJogadas(pJogada lista) {
 void printEstados(pJogada p, int n) {
     if (p == NULL) return;
     int tam = nNosLista(p);
-    pJogada temp = NULL; //lista ligada
+    pJogada temp = NULL;
     // ver se n de sucessoes é menor que o tamanho da lista
     if (tam < n) return;
     temp = p;
     // tirar o (tam-n+1)x nó desde o inicio
-    for (int i = 1; i < tam - n + 1; i++) //JA FUNCIONA??? SUPOSTAMENTE
+    for (int i = 1; i < tam - n + 1; i++) //JA FUNCIONA??? VEER
         temp = temp->prox;
-
     printTabuleiroEstados(temp, p, n);
-}
-
-void printListaJogadasReverso(pJogada x) {
-    if (x == NULL)
-        return;
-
-    pJogada atual = x;
-    while (atual->prox != NULL) { // vai procurar o ultimo no
-        atual = atual->prox; //continua ate ter chegar la
-    }
-    while (atual != NULL) { // inicia no ultimo no e ate ao primeiro
-        printf("\n--------------------\nJogador %c \nPosicao da jogada no tabuleiro: %d %d\n", atual->x.nome,
-               atual->linha, atual->coluna);
-        printf("--------------------\n");
-
-    }
 }
 
 int nNosLista(pJogada p) {
@@ -90,8 +73,7 @@ void printTabuleiroEstados(pJogada tabAtual, pJogada listaJ, int n) {
             tabAux[head->linha][head->coluna] = 'R';
         } else if (head->x.jogada == 'D') {
             tabAux[head->linha][head->coluna] = 'P';
-        } else if (head->x.jogada ==
-                   'E') { //fazer aqui um realloc para ter espaço para inserir a linha //foi alterado a linha na proxima
+        } else if (head->x.jogada =='E') {
             if (head->prev->tamTab[0] != head->tamTab[0]) {
                 tam[0] = head->prev->tamTab[0];
                 tam[1] = head->prev->tamTab[1];
@@ -114,8 +96,7 @@ void printTabuleiroEstados(pJogada tabAtual, pJogada listaJ, int n) {
     printTabuleiro(head->tamTab, tabAux);
     //preencher com jogadas pedidas
     while (tabAtual) {
-        printf("\t -----------------------------------\n\t\t\t\t  Jogada %d\t\t\t\t\t\n\t -----------------------------------\n",
-               a + 1);
+        printf("\t -----------------------------------\n\t\t\t\t  Jogada %d\t\t\t\t\t\n\t -----------------------------------\n",a + 1);
         if (tabAtual->x.jogada == 'A') {
             tabAux[tabAtual->linha][tabAtual->coluna] = 'G';
         } else if (tabAtual->x.jogada == 'B') {
@@ -124,7 +105,7 @@ void printTabuleiroEstados(pJogada tabAtual, pJogada listaJ, int n) {
             tabAux[tabAtual->linha][tabAtual->coluna] = 'R';
         } else if (tabAtual->x.jogada == 'D') {
             tabAux[tabAtual->linha][tabAtual->coluna] = 'P';
-        } else if (tabAtual->x.jogada == 'E') { //fazer aqui um realloc para ter espaço para inserir a linha
+        } else if (tabAtual->x.jogada == 'E') {
             if (tabAtual->prev->tamTab[0] != tabAtual->tamTab[0]) {
                 tam[0] = tabAtual->prev->tamTab[0];
                 tam[1] = tabAtual->prev->tamTab[1];
@@ -146,14 +127,13 @@ void printTabuleiroEstados(pJogada tabAtual, pJogada listaJ, int n) {
         a++;
         tabAtual = tabAtual->prox;
     }
-    free(tabAtual);
+    freeListaJogadas(tabAtual);
+    freeTabuleiro(tabAux,tam[0]);
 }
 
-
-void printPedirEstados(pJogada x, int nTurnos) {
+void printPedirEstados(pJogada x) {
     int k = 0;
     char escolha;
-    int count = 0;
     do {
         printf("\nPretende visualizar o estado do tabuleiro? (S)/(N):\n>>");
         scanf(" %c", &escolha);

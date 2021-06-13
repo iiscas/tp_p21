@@ -1,29 +1,29 @@
+//ISABEL RAMOS CASTRO
+//2018013160
 #include "jogo.h"
 #include "tabuleiro.h"
 #include "historico.h"
 
 pJogada iniciaJogo(char **tab, jogador x[], pJogada lista, int tamTabuleiro[2], char pc, int *stop) {
     pJogada listaJogadas = lista;
-    int nTurnos = 0, a = 0, escolha = 0;
-    int tipoVencedor = 0;
-    if (lista != NULL) {
-        nTurnos = 1; //caso o jogo seja o recuperado!
-    }
+    int nTurnos = 0, a = 0, escolha = 0,tipoVencedor = 0;
+    if (lista != NULL) nTurnos = 1; //caso o jogo seja o recuperado!
 
     while (1) {
         *stop = 0;
-        if (nTurnos == 0)
-            printTabuleiro(tamTabuleiro, tab);
+        printf("\n-----------------------------------------------\n");
+        printTabuleiro(tamTabuleiro, tab);
         ////////////////////////////// JOGADOR A ////////////////////////////////////////////////////
         printf("Jogador %c e a sua vez! ", x[0].nome);
-        printPedirEstados(listaJogadas, nTurnos);
-        printJogadas(nTurnos, x[0]);
+        printPedirEstados(listaJogadas); //pergunta sobre historico
+        printJogadas(nTurnos, x[0]); //mostra jogadas para escolha
         escolheJogada(&x[0], nTurnos, tab, tamTabuleiro);
-        //jogada ja escolhida
-        if (x[0].jogada == 'F') {
+
+        if (x[0].jogada == 'F') { //se a jogada for F sai do jogo
             *stop = 1;
             break;
         }
+        //faz o tratamento de cada jogada escolhida
         listaJogadas = opcaoEscolhida(tab, &x[0], listaJogadas, tamTabuleiro, &escolha);
         if (escolha == 1) {
             tab = alteraNLinhas(tamTabuleiro, tab);
@@ -36,47 +36,45 @@ pJogada iniciaJogo(char **tab, jogador x[], pJogada lista, int tamTabuleiro[2], 
         //verifica se ha algum vencedor
         a = checkTabuleiro(tab, tamTabuleiro, &tipoVencedor);
         fflush(stdout);
-        if (a > -1) //se tabuleiro encontrou algo completo
+        if (a > -1) //se tabuleiro encontrou algo completo, entao vai confirmar quem ganhou
             if (procuraVencedor(listaJogadas, a, tipoVencedor) == 1) break;
 
         ////////////////////////////// JOGADOR B ////////////////////////////////////////////////////
         if (pc == 'N') {
             printf("Jogador %c e a sua vez! ", x[1].nome);
-            printPedirEstados(listaJogadas, nTurnos);
+            printPedirEstados(listaJogadas);
             printJogadas(nTurnos, x[1]);
             escolheJogada(&x[1], nTurnos, tab, tamTabuleiro);
             if (x[1].jogada == 'F') {
                 *stop = 1;
                 break;
             }
-            //jogada já escolhida
-            listaJogadas = opcaoEscolhida(tab, &x[1], listaJogadas, tamTabuleiro, &escolha);
+           listaJogadas = opcaoEscolhida(tab, &x[1], listaJogadas, tamTabuleiro, &escolha);
             if (escolha == 1) {
                 tab = alteraNLinhas(tamTabuleiro, tab);
                 escolha = 0;
             } else if (escolha == 2) {
-                tab = alteraNColunas(tamTabuleiro, tab); //altera colunas
+                tab = alteraNColunas(tamTabuleiro, tab);
                 escolha = 0;
             }
             printTabuleiro(tamTabuleiro, tab);
-            //verifica se há algum vencedor
             a = checkTabuleiro(tab, tamTabuleiro, &tipoVencedor);
-            //fflush(stdout);
             if (a > -1)
                 if (procuraVencedor(listaJogadas, a, tipoVencedor) == 1) break;
             fflush(stdout);
-            //////////Jogadas PC ///////////////
+        //////////////////////////////////// JOGADOR COMPUTADOR ////////////////////////////////////////////////////
         } else if (pc == 'S') {
-
-            escolheJogadaPC(&x[1], nTurnos, tab, tamTabuleiro);
+            escolheJogadaPC(&x[1], nTurnos, tab, tamTabuleiro); //usa random numeros para converter as letras
             listaJogadas = opcaoEscolhidaPC(tab, &x[1], listaJogadas, tamTabuleiro, &escolha);
+
             if (escolha == 1) {
                 tab = alteraNLinhas(tamTabuleiro, tab);
                 escolha = 0;
             } else if (escolha == 2) {
-                tab = alteraNColunas(tamTabuleiro, tab); //altera colunas
+                tab = alteraNColunas(tamTabuleiro, tab);
                 escolha = 0;
             }
+            printf("\n--------------\nJogada do pc!\n--------------\n");
             printTabuleiro(tamTabuleiro, tab);
             //verifica se há algum vencedor
             a = checkTabuleiro(tab, tamTabuleiro, &tipoVencedor);
@@ -87,28 +85,24 @@ pJogada iniciaJogo(char **tab, jogador x[], pJogada lista, int tamTabuleiro[2], 
         ///////////////////////////// FIM DO TURNO/JOGADA ///////////////////////////////////
         nTurnos++;
     }
-    if (listaJogadas != NULL)
-        printListaJogadas(listaJogadas);
     printf("\n-------------------------------\nVoltando ao menu inicial.....\n-------------------------------\n");
     sleep(1);
     return listaJogadas;
 }
 
 int verificaJogada(char **tab, int lJogador, int cJogador) {
-    //devolve 0 se não for possivel, 1 se for possivel
+    //verifica o que tem no tabuleiro na posicao escolhida
     if (tab[lJogador][cJogador] == '-') return 1;
     else if (tab[lJogador][cJogador] == 'G') return 2;
     else if (tab[lJogador][cJogador] == 'Y') return 3;
     else if (tab[lJogador][cJogador] == 'R') return 4;
     else if (tab[lJogador][cJogador] == 'P') return 5;
-    //else return 0;
     return 0;
 }
 
 pJogada jogadaA(char **tab, int tamTab[2], jogador x, pJogada listaJogadas) {
     int v, flag = 0;
     int linha, coluna;
-
     do {
         flag = 0;
         printf("\nJogador %c escolha a linha e a coluna da sua jogada!\n>>", x.nome);
@@ -120,17 +114,15 @@ pJogada jogadaA(char **tab, int tamTab[2], jogador x, pJogada listaJogadas) {
                 flag = 1;
             }
         }
-    } while ((linha > tamTab[0] && coluna > tamTab[1]) || flag == 1);
+    } while (linha >= tamTab[0] || coluna >= tamTab[1] || flag == 1);
 
     tab = preencheTabuleiro(tamTab, tab, linha, coluna, 'G');
     listaJogadas = adicionaFimLista(listaJogadas, x, linha, coluna, tamTab);
-    return
-            listaJogadas;
+    return listaJogadas;
 }
 
 pJogada jogadaB(char **tab, int tamTab[2], jogador x, pJogada listaJogadas) {
     int linha = 0, coluna = 0, v, flag;
-
     do {
         flag = 0;
         printf("\nJogador %c escolha a linha e a coluna da sua jogada!\n>>", x.nome);
@@ -142,7 +134,7 @@ pJogada jogadaB(char **tab, int tamTab[2], jogador x, pJogada listaJogadas) {
                 flag = 1;
             }
         }
-    } while ((linha > tamTab[0] && coluna > tamTab[1]) || flag == 1);
+    } while (linha >= tamTab[0] || coluna >= tamTab[1] || flag == 1);
 
     tab = preencheTabuleiro(tamTab, tab, linha, coluna, 'Y');
     listaJogadas = adicionaFimLista(listaJogadas, x, linha, coluna, tamTab);
@@ -151,7 +143,6 @@ pJogada jogadaB(char **tab, int tamTab[2], jogador x, pJogada listaJogadas) {
 
 pJogada jogadaC(char **tab, int tamTab[2], jogador x, pJogada listaJogadas) {
     int linha = 0, coluna = 0, v, flag;
-
     do {
         flag = 0;
         printf("\nJogador %c escolha a linha e a coluna da sua jogada!\n>>", x.nome);
@@ -163,7 +154,7 @@ pJogada jogadaC(char **tab, int tamTab[2], jogador x, pJogada listaJogadas) {
                 flag = 1;
             }
         }
-    } while ((linha > tamTab[0] && coluna > tamTab[1]) || flag == 1);
+    } while (linha >= tamTab[0] || coluna >= tamTab[1] || flag == 1);
 
     tab = preencheTabuleiro(tamTab, tab, linha, coluna, 'R');
     listaJogadas = adicionaFimLista(listaJogadas, x, linha, coluna, tamTab);
@@ -183,7 +174,7 @@ pJogada jogadaD(char **tab, int tamTab[2], pJogador x, pJogada listaJogadas) {
                 flag = 1;
             }
         }
-    } while ((linha > tamTab[0] && coluna > tamTab[1]) || flag == 1);
+    } while (linha >= tamTab[0] || coluna >= tamTab[1] || flag == 1);
     x->nPedras++;
     tab = preencheTabuleiro(tamTab, tab, linha, coluna, 'P');
     listaJogadas = adicionaFimLista(listaJogadas, *x, linha, coluna, tamTab);
@@ -192,19 +183,17 @@ pJogada jogadaD(char **tab, int tamTab[2], pJogador x, pJogada listaJogadas) {
 
 pJogada jogadaE(char **tab, int *escolha, pJogador x, pJogada listaJogadas, int tamTab[2]) {
     int linha = 0, temp[2];
-    temp[0] = tamTab[0];
-    temp[1] = tamTab[1];
-
+    temp[0] = tamTab[0]; temp[1] = tamTab[1];
     do {
         printf("\nJogador %c pretende adicionar linhas(1) ou colunas(2)\n>>", x->nome);
         scanf("%d", &linha);
     } while (!(linha <= 2));
+
     *escolha = linha;
     (x->nAdicoes)++;
-    if (linha == 1)
-        temp[0]++;
-    else if (linha == 2)
-        temp[1]++;
+
+    if (linha == 1) temp[0]++; //aumenta o tamanho do tabuleiro para que fique guardado na lista
+    else if (linha == 2) temp[1]++;
     listaJogadas = adicionaFimLista(listaJogadas, *x, -1, -1, temp);
     printTabuleiro(tamTab, tab);
     return listaJogadas;
@@ -213,11 +202,7 @@ pJogada jogadaE(char **tab, int *escolha, pJogador x, pJogada listaJogadas, int 
 pJogada adicionaFimLista(pJogada lista, jogador x, int l, int c, int tamTab[2]) {
     noJogada j;
     pJogada novaJogada, aux;
-    j.x = x;
-    j.linha = l;
-    j.coluna = c;
-    j.tamTab[1] = tamTab[1];
-    j.tamTab[0] = tamTab[0];
+    j.x = x; j.linha = l; j.coluna = c; j.tamTab[1] = tamTab[1]; j.tamTab[0] = tamTab[0];
 
     //ALOCAR MEMORIA
     novaJogada = malloc(sizeof(noJogada));
@@ -250,80 +235,6 @@ void printJogador(jogador x) {
     printf("N. de adicoes feitas %d\n", x.nAdicoes);
 }
 
-int checkTabuleiro(char **tab, int tamTab[2], int *tipo) {
-    int count = 1, linha = 0, coluna = 0;
-    int count1 = 1, count2 = 1, count3 = 1;
-    int diag1 = 0, diag2 = 0, matchD = 0;
-    //printf("linha %d coluna %d\n", tamTab[0], tamTab[1]);
-    //check se há match nas linhas
-    for (int i = 0; i < tamTab[0]; i++) {
-        count = 1;
-        for (int j = 0; j < tamTab[1]; j++) {
-            if (tab[i][j] == tab[i][j + 1] && tab[i][j] != '-' && tab[i][j] != 'P') {
-                //printf("count: %d\n", count);
-                count++;
-                //printf("count: %d\n", count);
-                linha = i;
-                if (count == tamTab[1]) {
-                    printf("\n-------------------\nLinha %d completa!\n-------------------\n", linha);
-                    *tipo = 0;
-                    return linha;
-                }
-            }
-        }
-    }
-    // check se há match nas colunas
-    for (int i = 0; i < tamTab[1]; i++) {
-        count1 = 1;
-        for (int j = 0; j < tamTab[0] - 1; j++) {
-            if (tab[j][i] == tab[j + 1][i] && tab[j][i] != '-' && tab[i][j] != 'P') {
-                //printf("count1: %d\n", count1);
-                count1++;
-                //printf("count1: %d\n", count1);
-                coluna = i;
-                if (count1 == tamTab[0]) {
-                    printf("\n-------------------\nColuna %d completa!\n-------------------\n", coluna);
-                    *tipo = 1;
-                    return coluna;
-                }
-            }
-        }
-
-    }
-    if (tamTab[0] == tamTab[1]) { //so procura nas diagonais se for quadrado
-        //check se há match na diagonal principal (00,11,22,33,44)
-        for (int i = 0; i < tamTab[0] - 1; i++) {
-            if (tab[i][i] == tab[i + 1][i + 1] & tab[i][i] != '-' && tab[i][i] != 'P') {
-                count2++;
-                diag1 = i;
-                matchD = 1;
-                if (count2 == tamTab[0]) {
-                    printf("\n-------------------\nDiagonal completa!\n-------------------\n");
-                    *tipo = 2;
-                    return diag1;
-                }
-            }
-        }
-        if (matchD != 1) {
-            //check se há match na diagonal secundaria se nao houver na principal (00,11,22,33,44)
-            int col = tamTab[1] - 1;
-            for (int i = 0; i < tamTab[0] - 1; i++, col--) {
-                if (tab[i][col] == tab[i + 1][col - 1] && tab[i][col] != '-' && col != 0 && tab[i][col] != 'P') {
-                    count3++;
-                    diag2 = col;
-
-                    if (count3 == tamTab[1]) {
-                        printf("\n-------------------\nDiagonal completa!\n-------------------\n");
-                        *tipo = 3;
-                        return diag2;
-                    }
-                }
-            }
-        }
-    }
-    return -1;
-}
-
 pJogada opcaoEscolhida(char **tab, pJogador x, pJogada listaJogadas, int tamTab[2], int *escolha) {
     if (x->jogada == 'A') {
         listaJogadas = jogadaA(tab, tamTab, *x, listaJogadas);
@@ -342,7 +253,6 @@ pJogada opcaoEscolhida(char **tab, pJogador x, pJogada listaJogadas, int tamTab[
 int procuraVencedor(pJogada listaJogadas, int x, int tipo) {
     if (listaJogadas == NULL)
         return -1;
-    jogador vencedor;
     pJogada atual = listaJogadas;
     while (atual->prox != NULL) { // vai procurar o ultimo no
         atual = atual->prox; //continua ate ter chegar la
@@ -433,48 +343,72 @@ void escolheJogadaPC(pJogador x, int nTurnos, char **tab, int tam[2]) {
 }
 
 pJogada opcaoEscolhidaPC(char **tab, pJogador x, pJogada listaJogadas, int *tamTab, int *escolha) {
-    int linha = 0, coluna = 0, v = 0;
+    int linha = 0, coluna = 0, v = 0, flag;
     int temp[2];
     temp[0] = tamTab[0];
     temp[1] = tamTab[1];
     if (x->jogada == 'A') {
         do {
+            flag = 0;
             linha = rand() % tamTab[0];
             coluna = rand() % tamTab[1];
-            v = verificaJogada(tab, linha, coluna);
-        } while (!(linha <= tamTab[0] && coluna <= tamTab[1]) && v == 0 || v == 2 || v == 3 || v == 4);
+            if (linha < tamTab[0] && coluna < tamTab[1]) {
+                v = verificaJogada(tab, linha, coluna);
+                if (v != 1) {
+                    flag = 1;
+                }
+            }
+        } while(linha >= tamTab[0] || coluna >= tamTab[1] || flag == 1);
+
         tab = preencheTabuleiro(tamTab, tab, linha, coluna, 'G');
         listaJogadas = adicionaFimLista(listaJogadas, *x, linha, coluna, tamTab);
     } else if (x->jogada == 'B') {
         do {
+            flag = 0;
             linha = rand() % tamTab[0];
             coluna = rand() % tamTab[1];
-            v = verificaJogada(tab, linha, coluna);
-        } while (!(linha <= tamTab[0] && coluna <= tamTab[1]) && v == 0 || v == 1 || v == 3 || v == 4);
+            if (linha < tamTab[0] && coluna < tamTab[1]) {
+                v = verificaJogada(tab, linha, coluna);
+                if (v != 2) {
+                    flag = 1;
+                }
+            }
+        } while (linha >= tamTab[0] || coluna >= tamTab[1] || flag == 1);
         tab = preencheTabuleiro(tamTab, tab, linha, coluna, 'Y');
         listaJogadas = adicionaFimLista(listaJogadas, *x, linha, coluna, tamTab);
 
     } else if (x->jogada == 'C') {
         do {
+            flag = 0;
             linha = rand() % tamTab[0];
             coluna = rand() % tamTab[1];
-            v = verificaJogada(tab, linha, coluna);
-        } while (!(linha <= tamTab[0] && coluna <= tamTab[1]) && v == 0 || v == 1 || v == 2 || v == 4);
+            if (linha < tamTab[0] && coluna < tamTab[1]) {
+                v = verificaJogada(tab, linha, coluna);
+                if (v != 3) {
+                    flag = 1;
+                }
+            }
+        } while (linha >= tamTab[0] || coluna >= tamTab[1] || flag == 1);
         tab = preencheTabuleiro(tamTab, tab, linha, coluna, 'R');
         listaJogadas = adicionaFimLista(listaJogadas, *x, linha, coluna, tamTab);
     } else if (x->jogada == 'D') {
         do {
+            flag = 0;
             linha = rand() % tamTab[0];
             coluna = rand() % tamTab[1];
-            v = verificaJogada(tab, linha, coluna);
-        } while (!(linha <= tamTab[0] && coluna <= tamTab[1]) && v == 0 || v == 2 || v == 3 || v == 4);
+            if (linha < tamTab[0] && coluna < tamTab[1]) {
+                v = verificaJogada(tab, linha, coluna);
+                if (v != 1) {
+                    flag = 1;
+                }
+            }
+        } while (linha >= tamTab[0] || coluna >= tamTab[1] || flag == 1);
         x->nPedras++;
         tab = preencheTabuleiro(tamTab, tab, linha, coluna, 'P');
         listaJogadas = adicionaFimLista(listaJogadas, *x, linha, coluna, tamTab);
 
     } else if (x->jogada == 'E') {
         linha = intUniformRnd(1, 2);
-        //printf("LINHA OU COLUNA? %d\n", linha);
         *escolha = linha;
         (x->nAdicoes)++;
         if (linha == 1)
@@ -495,4 +429,23 @@ int countPecas(char **tab, char jogada, int tam[2]) {
         }
     }
     return 0;
+}
+
+void freeListaJogadas(pJogada lista) {
+    pJogada aux = NULL;
+    while (lista != NULL) {
+        aux = lista;
+        lista = lista->prox;
+        free(aux);
+    }
+}
+
+void initJogadores(jogador *j) {
+   j[0].nome='A';
+   j[1].nome='B';
+    for(int i=0; i<2; i++) {
+        j[i].jogada='-';
+        j[i].nAdicoes=0;
+        j[i].nPedras=0;
+    }
 }

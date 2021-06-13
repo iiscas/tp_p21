@@ -1,3 +1,5 @@
+//ISABEL RAMOS CASTRO
+//2018013160
 #include "ficheiros.h"
 #include "historico.h"
 
@@ -46,12 +48,11 @@ void preencheFichBinario(pJogada lista, int pc, int numJogadas) {
         return;
     }
     if (aux != NULL) {
-        fwrite(&numJogadas, sizeof(int), 1, f);
-        fwrite(&pc, sizeof(int), 1, f); //escrever 1 se jogou com pc ou 0 senao
+        fwrite(&numJogadas, sizeof(int), 1, f); //escrever numero de jogadas
+        fwrite(&pc, sizeof(int), 1, f); //escrever 1 se jogou com pc ou 0
     }
     for (int i = 0; i < numJogadas; i++) {
         fwrite(aux, sizeof(noJogada), 1, f);
-        //printf("LISTA A SER GUARDADA--JOG NOME: %c\n",x->x.nome);
         aux = aux->prox;
     }
     free(aux);
@@ -68,24 +69,14 @@ pJogada preencheListaRec(pJogada lista, int *pc, int *numJogadas) {
         printf("Erro ao abrir o ficheiro\n");
         return lista;
     }
-    fread(numJogadas, sizeof(int), 1, f);
-    fread(pc, sizeof(int), 1, f);
-    //printf("PC: %c\n", *pc);
-    // Ler os dados do ficheiro
+    fread(numJogadas, sizeof(int), 1, f); //numero de jogadas
+    fread(pc, sizeof(int), 1, f); //pc ou jogador normal
     for (int i = 0; i < *numJogadas; i++) {
         fread(&x, sizeof(noJogada), 1, f);
-        //printJogador(x.x);
         aux = adicionaFimLista(aux, x.x, x.linha, x.coluna, x.tamTab);
-        //printJogador(aux->x);
-        //printListaJogadas(aux);
-        //aux=aux->prox;
-
     }
-    lista = aux;
     fclose(f);
-    free(aux);
-
-    return lista;
+    return aux;
 }
 
 

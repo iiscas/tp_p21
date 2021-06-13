@@ -1,3 +1,5 @@
+//ISABEL RAMOS CASTRO
+//2018013160
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -24,18 +26,14 @@ void menuPrincipal() {
 
 int main() {
     initRandom();
-    int tamTabuleiro[2], escolha = 0, stop = 0;
+    int tamTabuleiro[2], escolha = 0, stop;
     char pc, fichJog[25], recJogo;
-    char **tabuleiro = NULL;
-    pJogada listaJogadas;
-
-    pJogada aux = NULL;
-    jogador jogadores[2] = {
-            {'A', '-', 0, 0},
-            {'B', '-', 0, 0}};
-
+    pJogada listaJogadas; jogador jogadores[2];
     do {
+        stop=0;
+        char **tabuleiro = NULL;
         listaJogadas = NULL;
+        initJogadores(jogadores);
         menuPrincipal();
         scanf("%d", &escolha);
         switch (escolha) {
@@ -52,25 +50,19 @@ int main() {
                 if (recJogo == 'S') {
                     int total = 0;
                     listaJogadas = preencheListaRec(listaJogadas, (int *) &pc, &total);
-                    //printListaJogadas(listaJogadas);
-                    if (pc == 'S')
-                        puts("Vai jogar contra o pc!\n");
-                    else
-                        puts("\nPrecisa de outro jogador!");
+
+                    if (pc == 'S') puts("Vai jogar contra o pc!\n");
+                    else puts("\nPrecisa de outro jogador!");
 
                     printf("\n----------------------\nJogo vai recomeçar!\n----------------------\n");
                     printf("\n-------------------------\nA recriar o tabuleiro...\n-------------------------\n");
                     sleep(1);
-                    //JOGO E TABULEIRO A SEREM PREPARADOS
+                    //JOGO E TABULEIRO A SEREM PREPARADOS COM DADOS ANTERIORES
                     tabuleiro = recuperaTabuleiro(listaJogadas, tamTabuleiro);
                     listaJogadas = iniciaJogo(tabuleiro, jogadores, listaJogadas, tamTabuleiro, pc, &stop);
+                    //SE JOGO FOI INTERROMPIDO ENTAO GRAVAR JOGO //SENAO FOI PQ ALGUÉM GANHOU E NAO É PARA GRAVAR!
+                    if (stop == 1) preencheFichBinario(listaJogadas, (int) pc, nNosLista(listaJogadas));
 
-                    //SAIU DO JOGO
-                    //SE FOI INTERROMPIDO ENTAO GRAVAR JOGO
-                    if (stop == 1 && listaJogadas != NULL) {
-                        preencheFichBinario(listaJogadas, (int) pc, nNosLista(listaJogadas));
-                    }
-                    //SENAO FOI PQ ALGUÉM GANHOU E NAO É PARA GRAVAR!
                     //GRAVAR RELATORIO DO JOGO
                     sleep(1);
                     do {
@@ -82,8 +74,10 @@ int main() {
 
                     if (gravaRelJogadas(listaJogadas, pc, fichJog))
                         puts("\n--------------------\nRelatorio guardado!\n--------------------");
-                    //escolha = 3;
-                    break;
+                    printListaJogadas(listaJogadas); //IMPRIME LISTA DE JOGADAS ANTES DE LIBERTAR MEMORIA
+                    freeTabuleiro(tabuleiro, tamTabuleiro[0]);
+                    freeListaJogadas(listaJogadas);
+                //CASO NAO QUEIRA RECUPERAR O JOGO ANTERIOR
                 } else {
                     do {
                         printf("------------------------------------\n"
@@ -98,10 +92,8 @@ int main() {
                     tabuleiro = inicializaTabuleiro(&tamTabuleiro[0], &tamTabuleiro[1]);
                     listaJogadas = iniciaJogo(tabuleiro, jogadores, listaJogadas, tamTabuleiro, pc, &stop);
                     //SAIU DO JOGO
-                    //SE FOI INTERROMPIDO ENTAO GRAVAR JOGO
-                    if (stop == 1 && listaJogadas != NULL)
-                        preencheFichBinario(listaJogadas, (int) pc, nNosLista(listaJogadas));
-                    //SENAO FOI PQ ALGUÉM GANHOU E NAO É PARA GRAVAR NO BINARIO!
+                    //SE FOI INTERROMPIDO ENTAO GRAVAR JOGO //SENAO FOI PQ ALGUÉM GANHOU E NAO É PARA GRAVAR NO BINARIO!
+                    if (stop == 1 ) preencheFichBinario(listaJogadas, (int) pc, nNosLista(listaJogadas));
                     //GRAVAR RELATORIO DO JOGO
                     sleep(1);
                     do {
@@ -113,12 +105,13 @@ int main() {
 
                     if (gravaRelJogadas(listaJogadas, pc, fichJog))
                         puts("\n--------------------\nRelatorio guardado!\n--------------------");
-                    //escolha = 3;
-                    if (listaJogadas != NULL)
-                        preencheFichBinario(listaJogadas, (int) pc, nNosLista(listaJogadas));
-                    break;
+                    printListaJogadas(listaJogadas);
+                    freeTabuleiro(tabuleiro, tamTabuleiro[0]);
+                    freeListaJogadas(listaJogadas);
                 }
-            case 2:;
+            break;
+            //////////////////////////////////////////////////////////////////////////////////////////////
+            case 2:; //IMPRIME AS REGRAS DO JOGO
                 printf("\n");
                 FILE *f;
                 char c;
@@ -128,23 +121,19 @@ int main() {
                 }
                 while ((c = fgetc(f)) != EOF)
                     putchar(c);
-
                 fclose(f);
                 printf("\n\n");
                 sleep(1);
                 break;
             default:
                 if (escolha != 3)
-                    printf("-----------------\nJogada inválida!\n-----------------\n\n");
+                    printf("-----------------\nOpcao inválida!\n-----------------\n\n");
                 break;
-
-
         }
     } while (escolha != 3);
-
-    free(tabuleiro[0]);
-    free(tabuleiro);
-    free(listaJogadas);
+    printf("\n--------------------------------------------------------\n"
+           "\t\t\t\t\tAdeus...."
+           "\n--------------------------------------------------------");
     return 0;
 }
 

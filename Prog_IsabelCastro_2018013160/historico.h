@@ -1,3 +1,5 @@
+//ISABEL RAMOS CASTRO
+//2018013160
 #ifndef MAIN_C_HISTORICO_H
 #define MAIN_C_HISTORICO_H
 
@@ -9,14 +11,11 @@ void printJogadas(int count, jogador x);
 
 void printEstados(pJogada p, int k);
 
-void printListaJogadasReverso(pJogada head);
-
 int nNosLista(pJogada head);
 
 void printTabuleiroEstados(pJogada tabAtual, pJogada head, int n);
 
-void printPedirEstados(pJogada x, int nTurnos);
-
+void printPedirEstados(pJogada x);
 
 
 #endif //MAIN_C_HISTORICO_H
